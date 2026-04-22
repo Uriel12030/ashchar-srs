@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { Icon } from "@/components/Icons";
+import type { Dict } from "@/lib/i18n";
 import {
   contact,
   mailtoLink,
@@ -11,41 +11,23 @@ import {
   whatsappLink,
 } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Contact — Ashchar",
-  description:
-    "Direct contact channels for Ashchar — email, phone, and WhatsApp.",
-};
+export function ContactView({ t }: { t: Dict }) {
+  const channels = t.contact.channels.map((c) => {
+    if (c.kind === "email") {
+      return { ...c, value: c.value || contact.email, href: mailtoLink(), external: false };
+    }
+    if (c.kind === "phone") {
+      return { ...c, value: c.value || contact.phone, href: telLink(), external: false };
+    }
+    return { ...c, href: whatsappLink(), external: true };
+  });
 
-const channels = [
-  {
-    label: "Email",
-    icon: "mail" as const,
-    value: contact.email,
-    href: mailtoLink(),
-  },
-  {
-    label: "Phone",
-    icon: "phone" as const,
-    value: contact.phone,
-    href: telLink(),
-  },
-  {
-    label: "WhatsApp",
-    icon: "whatsapp" as const,
-    value: "Message",
-    href: whatsappLink(),
-    external: true,
-  },
-];
-
-export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="/ CONTACT"
-        title="Get in touch."
-        description="Direct channels for inquiries and structured requirements."
+        eyebrow={t.contact.pageEyebrow}
+        title={t.contact.pageTitle}
+        description={t.contact.pageDescription}
       />
 
       <section className="bg-white">
@@ -53,10 +35,10 @@ export default function ContactPage() {
           <div className="grid gap-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <div>
               <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                / CHANNELS
+                {t.contact.channelsEyebrow}
               </p>
               <h2 className="mt-5 font-display text-2xl lg:text-3xl font-semibold leading-[1.1] tracking-tighter2 text-navy">
-                Direct contact.
+                {t.contact.channelsTitle}
               </h2>
               <ul className="mt-10 space-y-0">
                 {channels.map((c) => (
@@ -75,7 +57,10 @@ export default function ContactPage() {
                           <p className="font-mono text-[10px] tracking-[0.22em] text-ink-soft uppercase">
                             {c.label}
                           </p>
-                          <p className="mt-1 font-display text-base font-semibold text-navy group-hover:text-accent-dark transition-colors">
+                          <p
+                            className="mt-1 font-display text-base font-semibold text-navy group-hover:text-accent-dark transition-colors"
+                            dir={c.kind === "whatsapp" ? undefined : "ltr"}
+                          >
                             {c.value}
                           </p>
                         </div>
@@ -83,7 +68,7 @@ export default function ContactPage() {
                       <Icon
                         name="arrow-up-right"
                         size={18}
-                        className="text-ink-soft group-hover:text-accent-dark transition"
+                        className="text-ink-soft group-hover:text-accent-dark transition rtl:-scale-x-100"
                       />
                     </a>
                   </li>
@@ -95,26 +80,23 @@ export default function ContactPage() {
                   size={18}
                   className="mt-0.5 text-accent-dark shrink-0"
                 />
-                <span>
-                  Based in Israel. Operational coverage nationwide.
-                </span>
+                <span>{t.contact.coverageText}</span>
               </div>
             </div>
 
             <div>
               <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                / MESSAGE
+                {t.contact.messageEyebrow}
               </p>
               <h2 className="mt-5 font-display text-2xl lg:text-3xl font-semibold leading-[1.1] tracking-tighter2 text-navy">
-                Send a message.
+                {t.contact.messageTitle}
               </h2>
               <p className="mt-4 text-sm text-ink-muted max-w-md">
-                Share the outline of your requirement — scope, location, and
-                timeline. Minimal information is enough to start.
+                {t.contact.messageDescription}
               </p>
               <div className="mt-10">
                 <Suspense fallback={<div className="h-10" />}>
-                  <ContactForm />
+                  <ContactForm t={t.contact.form} common={t.common} />
                 </Suspense>
               </div>
             </div>

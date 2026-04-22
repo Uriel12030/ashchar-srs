@@ -1,26 +1,25 @@
 import { Container } from "../Container";
-import { howWeOperate } from "@/data/content";
+import type { Dict } from "@/lib/i18n";
 
-export function HowWeOperate() {
+export function HowWeOperate({ t }: { t: Dict["howWeOperate"] }) {
   return (
     <section className="bg-white">
       <Container className="py-24 lg:py-36">
         <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
           <div>
             <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-              / HOW WE OPERATE
+              {t.eyebrow}
             </p>
             <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-              Structured execution for operational environments.
+              {t.title}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ink-muted max-w-md">
-              The principles that shape how we scope, coordinate, and deliver
-              on the ground.
+              {t.description}
             </p>
           </div>
 
           <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
-            {howWeOperate.map((item, i) => (
+            {t.items.map((item, i) => (
               <li key={item.title} className="flex gap-5">
                 <span className="font-mono text-[11px] tracking-[0.18em] text-accent-dark pt-1 whitespace-nowrap">
                   / {String(i + 1).padStart(2, "0")}

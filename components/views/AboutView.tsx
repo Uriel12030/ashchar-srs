@@ -1,26 +1,19 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
-import { aboutScale, howWeOperate } from "@/data/content";
+import type { Dict } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "About — Ashchar",
-  description:
-    "Ashchar is an Israeli company focused on operational delivery across accommodation, infrastructure, logistics, equipment, and field support.",
-};
-
-export default function AboutPage() {
+export function AboutView({ t }: { t: Dict }) {
   return (
     <>
       <PageHero
-        eyebrow="/ ABOUT"
+        eyebrow={t.about.pageEyebrow}
         title={
           <>
-            An Israeli operational partner{" "}
-            <span className="text-accent">for structured delivery.</span>
+            {t.about.pageTitleStart}{" "}
+            <span className="text-accent">{t.about.pageTitleAccent}</span>
           </>
         }
-        description="Ashchar coordinates multi-disciplinary operational requirements in Israel — from a single service to a full end-to-end deployment."
+        description={t.about.pageDescription}
       />
 
       <section className="bg-white">
@@ -28,28 +21,16 @@ export default function AboutPage() {
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div>
               <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                / COMPANY
+                {t.about.companyEyebrow}
               </p>
               <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-                Who we are.
+                {t.about.companyTitle}
               </h2>
             </div>
             <div className="space-y-6 text-base leading-relaxed text-ink-muted">
-              <p>
-                Ashchar is an Israeli company focused on operational
-                delivery across accommodation, infrastructure, logistics,
-                equipment, and field support.
-              </p>
-              <p>
-                We work with government entities, international organizations,
-                and private companies that require practical execution in
-                Israel.
-              </p>
-              <p>
-                Our role is to translate complex or multi-disciplinary
-                requirements into coordinated, real-world solutions — delivered
-                on the ground through an established local network.
-              </p>
+              {t.about.companyParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </div>
         </Container>
@@ -60,18 +41,18 @@ export default function AboutPage() {
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div>
               <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                / OPERATIONAL SCALE
+                {t.about.scaleEyebrow}
               </p>
               <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-                Today, Ashchar manages:
+                {t.about.scaleTitle}
               </h2>
               <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
-                A snapshot of the scale currently under coordination.
+                {t.about.scaleDescription}
               </p>
             </div>
 
             <ul className="self-center">
-              {aboutScale.map((item) => (
+              {t.about.scaleItems.map((item) => (
                 <li
                   key={item.text}
                   className="flex items-baseline gap-6 border-t border-navy/10 py-5 last:border-b"
@@ -94,19 +75,18 @@ export default function AboutPage() {
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div>
               <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                / OPERATING PRINCIPLES
+                {t.about.principlesEyebrow}
               </p>
               <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-                How we work.
+                {t.about.principlesTitle}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-ink-muted max-w-md">
-                The principles that shape how we scope, coordinate, and
-                deliver.
+                {t.about.principlesDescription}
               </p>
             </div>
 
             <ul className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
-              {howWeOperate.map((item, i) => (
+              {t.howWeOperate.items.map((item, i) => (
                 <li key={item.title} className="flex gap-5">
                   <span className="font-mono text-[11px] tracking-[0.18em] text-accent-dark pt-1 whitespace-nowrap">
                     / {String(i + 1).padStart(2, "0")}

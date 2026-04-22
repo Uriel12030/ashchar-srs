@@ -1,30 +1,28 @@
 import { Container } from "../Container";
 import { Icon } from "../Icons";
-import { capabilityGroups } from "@/data/capabilities";
+import type { Dict } from "@/lib/i18n";
 
-export function CapabilityGroups() {
+export function CapabilityGroups({ t }: { t: Dict["capabilityGroups"] }) {
   return (
     <section id="capabilities" className="bg-surface-soft">
       <Container className="py-24 lg:py-36">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-              / CAPABILITIES
+              {t.eyebrow}
             </p>
             <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-              Three capability groups.
+              {t.title1}
               <br />
-              One coordinated partner.
+              {t.title2}
             </h2>
             <p className="mt-6 text-base leading-relaxed text-ink-muted">
-              Our services are organized around three capability groups.
-              Together they cover the full scope of an operational deployment
-              in Israel.
+              {t.intro}
             </p>
           </div>
 
           <div className="space-y-5">
-            {capabilityGroups.map((group) => (
+            {t.groups.map((group) => (
               <article
                 key={group.id}
                 className="grid grid-cols-1 gap-6 rounded-2xl border border-navy/10 bg-white p-8 lg:grid-cols-[auto_1fr] lg:gap-10 lg:p-10"

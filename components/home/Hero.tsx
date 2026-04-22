@@ -1,6 +1,7 @@
 import { Container } from "../Container";
+import type { Dict } from "@/lib/i18n";
 
-export function Hero() {
+export function Hero({ t }: { t: Dict["hero"] }) {
   return (
     <section className="relative overflow-hidden bg-navy text-white">
       <div
@@ -22,37 +23,36 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-24 right-6 hidden md:block font-mono text-[10px] tracking-[0.22em] text-white/25"
+        className="pointer-events-none absolute top-24 end-6 hidden md:block font-mono text-[10px] tracking-[0.22em] text-white/25"
       >
         31.7683°N · 35.2137°E
       </div>
 
       <Container className="relative pt-40 pb-28 lg:pt-52 lg:pb-40">
         <div className="max-w-4xl">
-          <p className="font-display text-sm sm:text-base font-semibold uppercase tracking-[0.28em] text-accent">
-            Your Mission, Our Logistics.
-          </p>
+          <div className="inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-accent">
+            <span className="h-px w-8 bg-accent" />
+            {t.badge}
+          </div>
 
           <h1 className="mt-8 font-display text-[40px] sm:text-6xl lg:text-[76px] font-semibold leading-[1.02] tracking-tighter2">
-            Operational Solutions{" "}
-            <span className="text-accent">Across Israel.</span>
+            {t.titleLine1}
+            <br />
+            <span className="text-accent">{t.titleLine2}</span>
           </h1>
 
           <p className="mt-8 max-w-2xl text-lg lg:text-xl leading-relaxed text-white/70">
-            Ashchar provides accommodation, infrastructure, equipment, and
-            field support — coordinated across disciplines for government,
-            defense, and private sector operations.
+            {t.description}
           </p>
 
           <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-white/55">
-            Managing large-scale fleets, housing, and infrastructure across
-            Israel.
+            {t.supportingLine}
           </p>
 
           <div className="mt-12 flex items-center gap-3">
             <span className="h-px w-10 bg-accent/50" />
             <span className="font-mono text-[11px] tracking-[0.22em] text-white/50">
-              ISRAEL · 31.7683°N 35.2137°E
+              {t.coordsLabel}
             </span>
           </div>
         </div>

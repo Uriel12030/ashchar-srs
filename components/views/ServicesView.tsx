@@ -1,39 +1,32 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
 import { Icon } from "@/components/Icons";
-import { services } from "@/data/services";
+import type { Dict } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Services — Ashchar",
-  description:
-    "Full-scope operational services across Israel: accommodation, site setup, heavy equipment, modular structures, power and HVAC, transport, protection, and regulatory support.",
-};
-
-export default function ServicesPage() {
+export function ServicesView({ t }: { t: Dict }) {
   return (
     <>
       <PageHero
-        eyebrow="/ SERVICES"
+        eyebrow={t.services.pageEyebrow}
         title={
           <>
-            Operational services{" "}
-            <span className="text-accent">across Israel.</span>
+            {t.services.pageTitleStart}{" "}
+            <span className="text-accent">{t.services.pageTitleAccent}</span>
           </>
         }
-        description="A complete view of the services Ashchar provides — from accommodation and site setup through equipment, logistics, and regulatory support."
+        description={t.services.pageDescription}
       />
 
       <section className="bg-surface-soft border-b border-navy/10">
         <Container className="py-10 lg:py-14">
           <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-            / INDEX
+            / {t.common.index}
           </p>
           <nav
             aria-label="Services index"
             className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {services.map((s, i) => (
+            {t.services.services.map((s, i) => (
               <a
                 key={s.slug}
                 href={`#${s.slug}`}
@@ -48,7 +41,7 @@ export default function ServicesPage() {
                 <Icon
                   name="arrow-right"
                   size={14}
-                  className="text-ink-soft group-hover:text-accent-dark transition"
+                  className="text-ink-soft group-hover:text-accent-dark transition rtl:rotate-180"
                 />
               </a>
             ))}
@@ -58,7 +51,7 @@ export default function ServicesPage() {
 
       <section className="bg-white">
         <Container className="py-20 lg:py-28 space-y-20 lg:space-y-28">
-          {services.map((service, idx) => (
+          {t.services.services.map((service, idx) => (
             <article
               key={service.slug}
               id={service.slug}
@@ -81,7 +74,7 @@ export default function ServicesPage() {
 
               <div className="lg:pt-16">
                 <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-                  / SCOPE
+                  / {t.common.scope}
                 </p>
                 <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                   {service.capabilities.map((c) => (

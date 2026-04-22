@@ -1,14 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Heebo } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { site } from "@/data/site";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const heebo = Heebo({
+  subsets: ["latin", "hebrew"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-heebo",
   display: "swap",
 });
 
@@ -29,7 +34,6 @@ export const metadata: Metadata = {
     "modular buildings Israel",
     "heavy equipment rental Israel",
     "Ashchar",
-    "Ashchar",
   ],
   openGraph: {
     type: "website",
@@ -37,11 +41,18 @@ export const metadata: Metadata = {
     description: site.description,
     siteName: site.fullName,
     locale: "en_US",
+    alternateLocale: "he_IL",
   },
   twitter: {
     card: "summary_large_image",
     title: site.fullName,
     description: site.description,
+  },
+  alternates: {
+    languages: {
+      en: "/",
+      he: "/he",
+    },
   },
   robots: { index: true, follow: true },
 };
@@ -58,17 +69,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={`${inter.variable} ${heebo.variable}`}>
       <body className="min-h-screen bg-white text-navy antialiased selection:bg-accent/30 selection:text-navy">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-navy"
+          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-navy"
         >
           Skip to content
         </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

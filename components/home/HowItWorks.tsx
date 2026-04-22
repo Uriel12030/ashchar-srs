@@ -1,16 +1,16 @@
 import { Container } from "../Container";
-import { howItWorks } from "@/data/content";
+import type { Dict } from "@/lib/i18n";
 
-export function HowItWorks() {
+export function HowItWorks({ t }: { t: Dict["howItWorks"] }) {
   return (
     <section className="bg-surface-soft border-y border-navy/10">
       <Container className="py-24 lg:py-36">
         <div className="max-w-2xl">
           <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
-            / ENGAGEMENT
+            {t.eyebrow}
           </p>
           <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
-            A clear path from requirement to delivery.
+            {t.title}
           </h2>
         </div>
 
@@ -21,8 +21,11 @@ export function HowItWorks() {
               className="absolute left-[calc(10%)] right-[calc(10%)] top-6 h-px bg-navy/15"
             />
             <ol className="relative grid grid-cols-5 gap-6">
-              {howItWorks.map((item) => (
-                <li key={item.step} className="flex flex-col items-center text-center">
+              {t.items.map((item) => (
+                <li
+                  key={item.step}
+                  className="flex flex-col items-center text-center"
+                >
                   <span className="relative z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-white border border-navy/15 font-display text-sm font-semibold text-navy">
                     {item.step}
                   </span>
@@ -38,13 +41,13 @@ export function HowItWorks() {
           </div>
 
           <ol className="lg:hidden space-y-0">
-            {howItWorks.map((item, i) => (
+            {t.items.map((item, i) => (
               <li key={item.step} className="flex items-start gap-5">
                 <div className="flex flex-col items-center">
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white border border-navy/15 font-display text-sm font-semibold text-navy">
                     {item.step}
                   </span>
-                  {i < howItWorks.length - 1 && (
+                  {i < t.items.length - 1 && (
                     <span
                       aria-hidden="true"
                       className="my-2 h-10 w-px bg-navy/15"

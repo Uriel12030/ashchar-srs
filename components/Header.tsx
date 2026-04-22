@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { mainNav } from "@/data/navigation";
+import type { Dict } from "@/lib/i18n";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { Icon } from "./Icons";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
-export function Header() {
+export function Header({ t }: { t: Dict }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -35,7 +36,8 @@ export function Header() {
     };
   }, [open]);
 
-  const navItems = mainNav.filter((n) => n.href !== "/contact");
+  const contactHref = t.nav.find((n) => n.href.endsWith("/contact"))?.href ?? "/contact";
+  const navItems = t.nav.filter((n) => !n.href.endsWith("/contact"));
 
   return (
     <header
@@ -46,7 +48,7 @@ export function Header() {
       }`}
     >
       <Container className="flex h-[72px] items-center justify-between">
-        <Logo variant="light" />
+        <Logo variant="light" href={t.home} />
 
         <nav
           className="hidden lg:flex items-center gap-1"
@@ -54,8 +56,8 @@ export function Header() {
         >
           {navItems.map((item) => {
             const active =
-              item.href === "/"
-                ? pathname === "/"
+              item.href === t.home
+                ? pathname === t.home
                 : pathname.startsWith(item.href);
             return (
               <Link
@@ -74,33 +76,37 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center">
+        <div className="hidden lg:flex items-center gap-2.5">
           <Link
-            href="/contact"
+            href={contactHref}
             className="inline-flex items-center gap-2 rounded-md border border-white/20 px-4 py-2 text-sm font-medium text-white/90 transition hover:border-white/40 hover:text-white"
           >
-            Contact
+            {t.contactLabel}
           </Link>
+          <LanguageSwitcher current={t.locale} tone="light" />
         </div>
 
-        <button
-          type="button"
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-white hover:bg-white/10 transition"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <Icon name={open ? "close" : "menu"} />
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <LanguageSwitcher current={t.locale} tone="light" />
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white hover:bg-white/10 transition"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <Icon name={open ? "close" : "menu"} />
+          </button>
+        </div>
       </Container>
 
       {open && (
         <div className="lg:hidden border-t border-white/10 bg-navy">
           <Container className="py-6 space-y-1">
-            {mainNav.map((item) => {
+            {t.nav.map((item) => {
               const active =
-                item.href === "/"
-                  ? pathname === "/"
+                item.href === t.home
+                  ? pathname === t.home
                   : pathname.startsWith(item.href);
               return (
                 <Link

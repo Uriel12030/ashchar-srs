@@ -1,15 +1,13 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import { requirementTypes } from "@/data/content";
+import { FormEvent, useState } from "react";
+import type { Dict } from "@/lib/i18n";
 import { mailtoLink, contact } from "@/data/site";
 import { Icon } from "./Icons";
 
 type Status = "idle" | "sending" | "success" | "error";
 
-export function ContactForm() {
-  const params = useSearchParams();
+export function ContactForm({ t, common }: { t: Dict["contact"]["form"]; common: Dict["common"] }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
@@ -20,11 +18,6 @@ export function ContactForm() {
     requirement: "",
     message: "",
   });
-
-  useEffect(() => {
-    // Accept deep-link context without pre-filling promotional copy.
-    void params;
-  }, [params]);
 
   const onChange = (
     e: React.ChangeEvent<
@@ -60,17 +53,9 @@ export function ContactForm() {
         requirement: "",
         message: "",
       });
-    } catch (err) {
-      const fallback = mailtoLink(
-        `Inquiry from ${form.name || "website visitor"}`,
-      );
+    } catch {
       setStatus("error");
-      setError(
-        `We couldn't submit the form automatically. Please email us directly at ${contact.email} or use this link.`,
-      );
-      if (typeof window !== "undefined") {
-        window.console.info("Mailto fallback:", fallback);
-      }
+      setError(`${common.fallbackError} ${contact.email}`);
     }
   };
 
@@ -81,18 +66,15 @@ export function ContactForm() {
           <Icon name="check" size={20} />
         </div>
         <h3 className="mt-5 font-display text-xl font-semibold text-navy">
-          Message received
+          {common.messageReceived}
         </h3>
-        <p className="mt-3 text-ink-muted">
-          Thank you — your message has been received. We will respond in due
-          course.
-        </p>
+        <p className="mt-3 text-ink-muted">{common.messageReceivedBody}</p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-6 text-sm font-semibold text-navy underline hover:text-accent-dark"
         >
-          Send another message
+          {common.sendAnother}
         </button>
       </div>
     );
@@ -108,7 +90,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelBase}>
-            Name *
+            {t.name}
           </label>
           <input
             required
@@ -118,12 +100,12 @@ export function ContactForm() {
             value={form.name}
             onChange={onChange}
             className={`mt-2 ${inputBase}`}
-            placeholder="Full name"
+            placeholder={t.namePlaceholder}
           />
         </div>
         <div>
           <label htmlFor="company" className={labelBase}>
-            Company / Organization
+            {t.company}
           </label>
           <input
             id="company"
@@ -132,7 +114,7 @@ export function ContactForm() {
             value={form.company}
             onChange={onChange}
             className={`mt-2 ${inputBase}`}
-            placeholder="Company name"
+            placeholder={t.companyPlaceholder}
           />
         </div>
       </div>
@@ -140,7 +122,7 @@ export function ContactForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="email" className={labelBase}>
-            Email *
+            {t.email}
           </label>
           <input
             required
@@ -149,13 +131,14 @@ export function ContactForm() {
             type="email"
             value={form.email}
             onChange={onChange}
+            dir="ltr"
             className={`mt-2 ${inputBase}`}
-            placeholder="you@company.com"
+            placeholder={t.emailPlaceholder}
           />
         </div>
         <div>
           <label htmlFor="phone" className={labelBase}>
-            Phone
+            {t.phone}
           </label>
           <input
             id="phone"
@@ -163,25 +146,26 @@ export function ContactForm() {
             type="tel"
             value={form.phone}
             onChange={onChange}
+            dir="ltr"
             className={`mt-2 ${inputBase}`}
-            placeholder="+1 555 000 0000"
+            placeholder={t.phonePlaceholder}
           />
         </div>
       </div>
 
       <div>
         <label htmlFor="requirement" className={labelBase}>
-          Requirement Type
+          {t.requirement}
         </label>
         <select
           id="requirement"
           name="requirement"
           value={form.requirement}
           onChange={onChange}
-          className={`mt-2 ${inputBase} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%230F2A2D%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m4 6 4 4 4-4%22/></svg>')] bg-[right_1rem_center] bg-no-repeat pr-10`}
+          className={`mt-2 ${inputBase} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22none%22 stroke=%22%230F2A2D%22 stroke-width=%221.6%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m4 6 4 4 4-4%22/></svg>')] bg-[right_1rem_center] bg-no-repeat pe-10`}
         >
-          <option value="">Select a category…</option>
-          {requirementTypes.map((r) => (
+          <option value="">{t.requirementPlaceholder}</option>
+          {t.requirementOptions.map((r) => (
             <option key={r} value={r}>
               {r}
             </option>
@@ -191,7 +175,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className={labelBase}>
-          Message *
+          {t.message}
         </label>
         <textarea
           required
@@ -201,7 +185,7 @@ export function ContactForm() {
           value={form.message}
           onChange={onChange}
           className={`mt-2 ${inputBase}`}
-          placeholder="Briefly describe your requirement — scope, location, timeline."
+          placeholder={t.messagePlaceholder}
         />
       </div>
 
@@ -210,9 +194,9 @@ export function ContactForm() {
           {error}{" "}
           <a
             className="font-semibold underline"
-            href={mailtoLink(`Inquiry from ${form.name || "website visitor"}`)}
+            href={mailtoLink()}
           >
-            Open email
+            {common.openEmail}
           </a>
         </div>
       )}
@@ -223,7 +207,7 @@ export function ContactForm() {
           disabled={status === "sending"}
           className="inline-flex items-center justify-center gap-2 rounded-md border border-navy bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-navy-700 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2"
         >
-          {status === "sending" ? "Sending…" : "Send message"}
+          {status === "sending" ? common.sending : common.sendMessage}
           {status !== "sending" && <Icon name="arrow-right" size={16} />}
         </button>
       </div>

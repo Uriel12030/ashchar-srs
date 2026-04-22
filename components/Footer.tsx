@@ -2,32 +2,30 @@ import Link from "next/link";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { Icon } from "./Icons";
-import { services } from "@/data/services";
-import { mainNav } from "@/data/navigation";
+import type { Dict, Locale } from "@/lib/i18n";
 import { contact, mailtoLink, site, telLink, whatsappLink } from "@/data/site";
 
-export function Footer() {
+export function Footer({ t }: { t: Dict }) {
   const year = new Date().getFullYear();
+  const servicesBase = t.locale === "he" ? "/he/services" : "/services";
+  const locationLabel = t.locale === "he" ? "ישראל" : "Israel";
   return (
     <footer className="bg-navy text-white/80">
       <Container className="py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo variant="light" />
+            <Logo variant="light" href={t.home} />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/60">
-              {site.description}
-            </p>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-              {site.tagline}
+              {t.footer.descriptor}
             </p>
           </div>
 
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              Company
+              {t.footer.company}
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {mainNav.map((n) => (
+              {t.nav.map((n) => (
                 <li key={n.href}>
                   <Link
                     href={n.href}
@@ -42,13 +40,13 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              Services
+              {t.footer.services}
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {services.slice(0, 6).map((s) => (
+              {t.services.services.slice(0, 6).map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services#${s.slug}`}
+                    href={`${servicesBase}#${s.slug}`}
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     {s.title}
@@ -57,10 +55,10 @@ export function Footer() {
               ))}
               <li>
                 <Link
-                  href="/services"
+                  href={servicesBase}
                   className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5"
                 >
-                  All services
+                  {t.footer.allServices}
                   <Icon name="arrow-right" size={14} />
                 </Link>
               </li>
@@ -69,7 +67,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              Contact
+              {t.footer.contact}
             </h3>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-start gap-3">
@@ -77,6 +75,7 @@ export function Footer() {
                 <a
                   href={mailtoLink()}
                   className="text-white/80 hover:text-white transition-colors"
+                  dir="ltr"
                 >
                   {contact.email}
                 </a>
@@ -86,6 +85,7 @@ export function Footer() {
                 <a
                   href={telLink()}
                   className="text-white/80 hover:text-white transition-colors"
+                  dir="ltr"
                 >
                   {contact.phone}
                 </a>
@@ -93,7 +93,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Icon name="whatsapp" size={18} className="mt-0.5 text-accent" />
                 <a
-                  href={whatsappLink("Hello, I would like to request information.")}
+                  href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-white transition-colors"
@@ -103,7 +103,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Icon name="location" size={18} className="mt-0.5 text-accent" />
-                <span className="text-white/80">{site.location}</span>
+                <span className="text-white/80">{locationLabel}</span>
               </li>
             </ul>
           </div>
@@ -111,13 +111,14 @@ export function Footer() {
 
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="text-xs text-white/50">
-            © {year} {site.fullName}. All rights reserved.
+            © {year} {site.fullName}. {t.footer.rights}
           </p>
-          <p className="text-xs text-white/50">
-            Rapid logistics, infrastructure & operational solutions across Israel.
-          </p>
+          <p className="text-xs text-white/50">{t.footer.descriptor}</p>
         </div>
       </Container>
     </footer>
   );
 }
+
+// Guard unused types/parameters
+export type _FooterLocaleRef = Locale;

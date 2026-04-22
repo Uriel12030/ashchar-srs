@@ -5,12 +5,13 @@ export function Logo({
   variant = "light",
   className = "",
   height = 36,
+  href = "/",
 }: {
   variant?: "light" | "dark";
   className?: string;
   height?: number;
+  href?: string;
 }) {
-  // Logo SVG natural ratio is ~2.25:1 (width:height).
   const width = Math.round(height * 2.253);
   const src =
     variant === "light"
@@ -19,7 +20,7 @@ export function Logo({
 
   return (
     <Link
-      href="/"
+      href={href}
       aria-label="Ashchar — Home"
       className={`inline-flex items-center ${className}`}
     >
