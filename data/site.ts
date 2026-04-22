@@ -1,18 +1,18 @@
 export const site = {
-  name: "Ashchar SRS",
-  fullName: "Ashchar SRS Ltd.",
+  name: "Ashchar",
+  fullName: "Ashchar Ltd.",
   tagline: "Your Mission, Our Logistics.",
   description:
     "Rapid logistics, infrastructure, accommodation, and operational setup solutions across Israel for government, defense, and private sector clients.",
   shortDescription:
     "Fast-response accommodation, infrastructure, equipment, and field support solutions across Israel.",
-  url: "https://ashchar-srs.com",
+  url: "https://ashchar.com",
   location: "Israel",
 };
 
 export const contact = {
   email:
-    process.env.NEXT_PUBLIC_EMAIL ?? "info@ashchar-srs.com",
+    process.env.NEXT_PUBLIC_EMAIL ?? "info@ashchar.com",
   phone: process.env.NEXT_PUBLIC_PHONE ?? "+972-3-000-0000",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? "+972500000000",
 };

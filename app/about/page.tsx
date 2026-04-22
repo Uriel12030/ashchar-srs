@@ -4,9 +4,9 @@ import { PageHero } from "@/components/PageHero";
 import { howWeOperate } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "About — Ashchar SRS",
+  title: "About — Ashchar",
   description:
-    "Ashchar SRS is an Israeli company focused on operational delivery across accommodation, infrastructure, logistics, equipment, and field support.",
+    "Ashchar is an Israeli company focused on operational delivery across accommodation, infrastructure, logistics, equipment, and field support.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
             <span className="text-accent">for structured delivery.</span>
           </>
         }
-        description="Ashchar SRS coordinates multi-disciplinary operational requirements in Israel — from a single service to a full end-to-end deployment."
+        description="Ashchar coordinates multi-disciplinary operational requirements in Israel — from a single service to a full end-to-end deployment."
       />
 
       <section className="bg-white">
@@ -36,7 +36,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-6 text-base leading-relaxed text-ink-muted">
               <p>
-                Ashchar SRS is an Israeli company focused on operational
+                Ashchar is an Israeli company focused on operational
                 delivery across accommodation, infrastructure, logistics,
                 equipment, and field support.
               </p>

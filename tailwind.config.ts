@@ -9,33 +9,41 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Dark primary — deep teal, aligned with brand text color.
         navy: {
-          DEFAULT: "#0A1628",
-          50: "#F2F5F9",
-          100: "#D8E1EC",
-          200: "#AFC0D4",
-          300: "#7A92B2",
-          400: "#4A6487",
-          500: "#2A3E5C",
-          600: "#1A2A44",
-          700: "#0F1C33",
-          800: "#0A1628",
-          900: "#050B16",
+          DEFAULT: "#0F2A2D",
+          50: "#F0F5F5",
+          100: "#D5E2E1",
+          200: "#ABC4C3",
+          300: "#739C9A",
+          400: "#457571",
+          500: "#25525D",
+          600: "#1A3D42",
+          700: "#122E32",
+          800: "#0F2A2D",
+          900: "#081518",
         },
+        // Brand teal-green — from the logo mark.
         accent: {
-          DEFAULT: "#C8A456",
-          hover: "#B8944A",
-          dark: "#A07E38",
+          DEFAULT: "#399189",
+          hover: "#2E7B74",
+          dark: "#256962",
+        },
+        // Brand muted gray-blue — secondary mark color.
+        slate2: {
+          DEFAULT: "#A0A8BC",
+          soft: "#C4CAD6",
+          deep: "#7E8699",
         },
         ink: {
-          DEFAULT: "#0A1628",
-          muted: "#4A5568",
-          soft: "#718096",
+          DEFAULT: "#0F2A2D",
+          muted: "#4A5763",
+          soft: "#6B7680",
         },
         surface: {
           DEFAULT: "#FFFFFF",
-          soft: "#F7F9FC",
-          muted: "#EDF1F6",
+          soft: "#F4F7F7",
+          muted: "#E7EDED",
         },
       },
       fontFamily: {
@@ -46,8 +54,9 @@ const config: Config = {
         container: "1240px",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(10, 22, 40, 0.04), 0 4px 16px rgba(10, 22, 40, 0.06)",
-        cardHover: "0 2px 4px rgba(10, 22, 40, 0.06), 0 12px 32px rgba(10, 22, 40, 0.12)",
+        card: "0 1px 2px rgba(15, 42, 45, 0.04), 0 4px 16px rgba(15, 42, 45, 0.06)",
+        cardHover:
+          "0 2px 4px rgba(15, 42, 45, 0.06), 0 12px 32px rgba(15, 42, 45, 0.12)",
       },
       letterSpacing: {
         tightish: "-0.015em",

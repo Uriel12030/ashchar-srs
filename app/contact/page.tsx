@@ -12,9 +12,9 @@ import {
 } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contact — Ashchar SRS",
+  title: "Contact — Ashchar",
   description:
-    "Direct contact channels for Ashchar SRS — email, phone, and WhatsApp.",
+    "Direct contact channels for Ashchar — email, phone, and WhatsApp.",
 };
 
 const channels = [

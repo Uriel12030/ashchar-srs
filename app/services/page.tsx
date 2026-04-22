@@ -5,7 +5,7 @@ import { Icon } from "@/components/Icons";
 import { services } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Services — Ashchar SRS",
+  title: "Services — Ashchar",
   description:
     "Full-scope operational services across Israel: accommodation, site setup, heavy equipment, modular structures, power and HVAC, transport, protection, and regulatory support.",
 };

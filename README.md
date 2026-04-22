@@ -1,6 +1,6 @@
-# Ashchar SRS Ltd. — Website
+# Ashchar Ltd. — Website
 
-A production-ready Next.js website for **Ashchar SRS Ltd.**, an Israeli
+A production-ready Next.js website for **Ashchar Ltd.**, an Israeli
 operational solutions company providing rapid logistics, infrastructure,
 accommodation, and field support services to government, defense, and
 private sector clients.
@@ -152,4 +152,4 @@ direct email and a pre-filled `mailto:` link.
 
 ## License
 
-© Ashchar SRS Ltd. — All rights reserved.
+© Ashchar Ltd. — All rights reserved.

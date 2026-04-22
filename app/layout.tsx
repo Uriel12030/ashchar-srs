@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "modular buildings Israel",
     "heavy equipment rental Israel",
     "Ashchar",
-    "Ashchar SRS",
+    "Ashchar",
   ],
   openGraph: {
     type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A1628",
+  themeColor: "#0F2A2D",
   width: "device-width",
   initialScale: 1,
 };
