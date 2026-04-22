@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { PageHero } from "@/components/PageHero";
-import { howWeOperate } from "@/data/content";
+import { aboutScale, howWeOperate } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "About — Ashchar",
@@ -56,6 +56,40 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-surface-soft border-y border-navy/10">
+        <Container className="py-24 lg:py-36">
+          <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
+                / OPERATIONAL SCALE
+              </p>
+              <h2 className="mt-5 font-display text-3xl lg:text-[44px] font-semibold leading-[1.08] tracking-tighter2 text-navy">
+                Today, Ashchar manages:
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-ink-muted">
+                A snapshot of the scale currently under coordination.
+              </p>
+            </div>
+
+            <ul className="self-center">
+              {aboutScale.map((item) => (
+                <li
+                  key={item.text}
+                  className="flex items-baseline gap-6 border-t border-navy/10 py-5 last:border-b"
+                >
+                  <span className="min-w-[6rem] font-display text-2xl lg:text-3xl font-semibold tabular-nums text-navy">
+                    {item.value}
+                  </span>
+                  <span className="text-base leading-relaxed text-ink-muted">
+                    {item.text}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-white">
         <Container className="py-24 lg:py-36">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
             <div>

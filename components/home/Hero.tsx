@@ -44,6 +44,11 @@ export function Hero() {
             defense, and private sector operations.
           </p>
 
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-white/55">
+            Managing large-scale fleets, housing, and infrastructure across
+            Israel.
+          </p>
+
           <div className="mt-12 flex items-center gap-3">
             <span className="h-px w-10 bg-accent/50" />
             <span className="font-mono text-[11px] tracking-[0.22em] text-white/50">

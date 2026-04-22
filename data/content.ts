@@ -1,3 +1,33 @@
+export const operationalScale = [
+  {
+    value: "100+",
+    label: "Vehicles",
+    note: "Active rental fleet across Israel",
+  },
+  {
+    value: "80+",
+    label: "Heavy equipment units",
+    note: "Construction and engineering machinery",
+  },
+  {
+    value: "600+",
+    label: "Housing units",
+    note: "Under management",
+  },
+  {
+    value: "$20M+",
+    label: "Annual procurement",
+    note: "Volume across services",
+  },
+];
+
+export const aboutScale = [
+  { value: "100+", text: "Vehicles" },
+  { value: "80+", text: "Heavy equipment units" },
+  { value: "600+", text: "Housing units" },
+  { value: "$20M+", text: "Annual procurement volume" },
+];
+
 export const valueStrip = [
   {
     title: "Rapid Response",
