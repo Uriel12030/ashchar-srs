@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { mainNav } from "@/data/navigation";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
-import { Button } from "./Button";
 import { Icon } from "./Icons";
 
 export function Header() {
@@ -36,19 +35,24 @@ export function Header() {
     };
   }, [open]);
 
+  const navItems = mainNav.filter((n) => n.href !== "/contact");
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-navy/95 backdrop-blur shadow-[0_1px_0_rgba(255,255,255,0.06)]"
+          ? "bg-navy/95 backdrop-blur border-b border-white/5"
           : "bg-navy"
       }`}
     >
       <Container className="flex h-[72px] items-center justify-between">
         <Logo variant="light" />
 
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
-          {mainNav.map((item) => {
+        <nav
+          className="hidden lg:flex items-center gap-1"
+          aria-label="Primary"
+        >
+          {navItems.map((item) => {
             const active =
               item.href === "/"
                 ? pathname === "/"
@@ -58,27 +62,25 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 className={`relative rounded-md px-4 py-2 text-sm font-medium transition-colors ${
-                  active
-                    ? "text-white"
-                    : "text-white/70 hover:text-white"
+                  active ? "text-white" : "text-white/65 hover:text-white"
                 }`}
               >
                 {item.label}
                 {active && (
-                  <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded bg-accent" />
+                  <span className="absolute inset-x-4 -bottom-0.5 h-px bg-accent" />
                 )}
               </Link>
             );
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
-          <Button href="/contact" variant="ghost">
-            Contact Us
-          </Button>
-          <Button href="/contact?type=quote" variant="primary">
-            Request a Quote
-          </Button>
+        <div className="hidden lg:flex items-center">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-md border border-white/20 px-4 py-2 text-sm font-medium text-white/90 transition hover:border-white/40 hover:text-white"
+          >
+            Contact
+          </Link>
         </div>
 
         <button
@@ -114,18 +116,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <div className="pt-4 flex flex-col gap-3">
-              <Button href="/contact" variant="ghost" className="w-full">
-                Contact Us
-              </Button>
-              <Button
-                href="/contact?type=quote"
-                variant="primary"
-                className="w-full"
-              >
-                Request a Quote
-              </Button>
-            </div>
           </Container>
         </div>
       )}

@@ -1,6 +1,6 @@
 import { ReactElement, SVGProps } from "react";
 
-type IconName =
+export type IconName =
   | "bed"
   | "building"
   | "crane"

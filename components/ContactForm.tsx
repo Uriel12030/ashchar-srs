@@ -22,15 +22,8 @@ export function ContactForm() {
   });
 
   useEffect(() => {
-    const type = params.get("type");
-    if (type === "quote") {
-      setForm((f) => ({
-        ...f,
-        message:
-          f.message ||
-          "I would like to request a quote for the following requirement:\n\n",
-      }));
-    }
+    // Accept deep-link context without pre-filling promotional copy.
+    void params;
   }, [params]);
 
   const onChange = (
@@ -88,18 +81,18 @@ export function ContactForm() {
           <Icon name="check" size={20} />
         </div>
         <h3 className="mt-5 font-display text-xl font-semibold text-navy">
-          Request received
+          Message received
         </h3>
         <p className="mt-3 text-ink-muted">
-          Thank you — we have your request and will get back to you shortly.
-          For urgent matters, reach us directly by phone or WhatsApp.
+          Thank you — your message has been received. We will respond in due
+          course.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-6 text-sm font-semibold text-navy underline hover:text-accent-dark"
         >
-          Submit another request
+          Send another message
         </button>
       </div>
     );
@@ -224,18 +217,15 @@ export function ContactForm() {
         </div>
       )}
 
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
+      <div className="flex items-start pt-2">
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-6 py-3.5 text-sm font-semibold text-navy shadow-sm transition-all hover:bg-accent-hover hover:shadow-md disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="inline-flex items-center justify-center gap-2 rounded-md border border-navy bg-navy px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-navy-700 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2"
         >
-          {status === "sending" ? "Sending…" : "Send Request"}
+          {status === "sending" ? "Sending…" : "Send message"}
           {status !== "sending" && <Icon name="arrow-right" size={16} />}
         </button>
-        <p className="text-xs text-ink-muted">
-          We typically respond within hours during business days.
-        </p>
       </div>
     </form>
   );

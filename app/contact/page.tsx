@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact — Ashchar SRS",
   description:
-    "Send a requirement or request a quote. We respond quickly by email, phone, or WhatsApp.",
+    "Direct contact channels for Ashchar SRS — email, phone, and WhatsApp.",
 };
 
 const channels = [
@@ -22,22 +22,19 @@ const channels = [
     label: "Email",
     icon: "mail" as const,
     value: contact.email,
-    href: mailtoLink("Inquiry — Ashchar SRS"),
-    hint: "Preferred for structured requirements",
+    href: mailtoLink(),
   },
   {
     label: "Phone",
     icon: "phone" as const,
     value: contact.phone,
     href: telLink(),
-    hint: "Direct line for urgent matters",
   },
   {
     label: "WhatsApp",
     icon: "whatsapp" as const,
-    value: "Message us",
-    href: whatsappLink("Hello, I would like to discuss a requirement."),
-    hint: "Fastest informal channel",
+    value: "Message",
+    href: whatsappLink(),
     external: true,
   },
 ];
@@ -46,107 +43,81 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title={
-          <>
-            Send a requirement.{" "}
-            <span className="text-accent">We respond fast.</span>
-          </>
-        }
-        description="Share the outline of your need — scope, location, timeline. Minimal information is enough to start. We respond within hours on business days."
+        eyebrow="/ CONTACT"
+        title="Get in touch."
+        description="Direct channels for inquiries and structured requirements."
       />
 
       <section className="bg-white">
         <Container className="py-20 lg:py-28">
-          <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+          <div className="grid gap-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <div>
-              <h2 className="font-display text-2xl font-semibold text-navy">
-                Request a quote or send a message
-              </h2>
-              <p className="mt-3 text-ink-muted">
-                Fields marked with * are required. All inquiries are handled
-                directly by our team.
+              <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
+                / CHANNELS
               </p>
-              <div className="mt-8">
+              <h2 className="mt-5 font-display text-2xl lg:text-3xl font-semibold leading-[1.1] tracking-tighter2 text-navy">
+                Direct contact.
+              </h2>
+              <ul className="mt-10 space-y-0">
+                {channels.map((c) => (
+                  <li key={c.label}>
+                    <a
+                      href={c.href}
+                      target={c.external ? "_blank" : undefined}
+                      rel={c.external ? "noopener noreferrer" : undefined}
+                      className="group flex items-center justify-between gap-6 border-t border-navy/10 py-6 last:border-b"
+                    >
+                      <div className="flex items-center gap-5">
+                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-navy text-accent">
+                          <Icon name={c.icon} size={18} />
+                        </span>
+                        <div>
+                          <p className="font-mono text-[10px] tracking-[0.22em] text-ink-soft uppercase">
+                            {c.label}
+                          </p>
+                          <p className="mt-1 font-display text-base font-semibold text-navy group-hover:text-accent-dark transition-colors">
+                            {c.value}
+                          </p>
+                        </div>
+                      </div>
+                      <Icon
+                        name="arrow-up-right"
+                        size={18}
+                        className="text-ink-soft group-hover:text-accent-dark transition"
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 flex items-start gap-3 text-sm text-ink-muted">
+                <Icon
+                  name="location"
+                  size={18}
+                  className="mt-0.5 text-accent-dark shrink-0"
+                />
+                <span>
+                  Based in Israel. Operational coverage nationwide.
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.22em] text-accent-dark">
+                / MESSAGE
+              </p>
+              <h2 className="mt-5 font-display text-2xl lg:text-3xl font-semibold leading-[1.1] tracking-tighter2 text-navy">
+                Send a message.
+              </h2>
+              <p className="mt-4 text-sm text-ink-muted max-w-md">
+                Share the outline of your requirement — scope, location, and
+                timeline. Minimal information is enough to start.
+              </p>
+              <div className="mt-10">
                 <Suspense fallback={<div className="h-10" />}>
                   <ContactForm />
                 </Suspense>
               </div>
             </div>
-
-            <aside className="space-y-5">
-              <div className="rounded-2xl bg-navy p-8 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent">
-                  Direct channels
-                </p>
-                <h3 className="mt-3 font-display text-xl font-semibold">
-                  Reach us directly
-                </h3>
-                <p className="mt-3 text-sm text-white/70">
-                  Skip the form — contact us directly by phone, WhatsApp, or
-                  email.
-                </p>
-                <ul className="mt-6 space-y-4">
-                  {channels.map((c) => (
-                    <li key={c.label}>
-                      <a
-                        href={c.href}
-                        target={c.external ? "_blank" : undefined}
-                        rel={c.external ? "noopener noreferrer" : undefined}
-                        className="group flex items-start gap-4 rounded-lg border border-white/10 bg-white/5 p-4 transition hover:border-accent/50 hover:bg-white/10"
-                      >
-                        <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-accent/15 text-accent">
-                          <Icon name={c.icon} size={20} />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/60">
-                            {c.label}
-                          </p>
-                          <p className="mt-1 truncate font-display text-base font-semibold text-white group-hover:text-accent">
-                            {c.value}
-                          </p>
-                          <p className="mt-1 text-xs text-white/60">
-                            {c.hint}
-                          </p>
-                        </div>
-                        <Icon
-                          name="arrow-up-right"
-                          size={18}
-                          className="ml-auto mt-1 text-white/40 transition group-hover:text-accent"
-                        />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rounded-2xl border border-navy/10 bg-surface-soft p-8">
-                <div className="flex items-center gap-3">
-                  <Icon name="clock" size={20} className="text-accent-dark" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-navy">
-                    Response time
-                  </p>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                  We typically respond within hours during business days.
-                  Urgent requests are reviewed immediately — please indicate
-                  urgency in your message or call directly.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-navy/10 bg-surface-soft p-8">
-                <div className="flex items-center gap-3">
-                  <Icon name="location" size={20} className="text-accent-dark" />
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-navy">
-                    Coverage
-                  </p>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-                  Operating nationwide across Israel. We coordinate with
-                  suppliers, authorities, and operators countrywide.
-                </p>
-              </div>
-            </aside>
           </div>
         </Container>
       </section>

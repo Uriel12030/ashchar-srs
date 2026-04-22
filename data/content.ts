@@ -17,38 +17,40 @@ export const valueStrip = [
   },
 ];
 
-export const whyAshchar = [
+export const howWeOperate = [
   {
-    title: "Speed That Matters",
+    title: "Rapid response timelines",
     description:
-      "We move from first contact to operational delivery in the shortest path possible.",
+      "Requirements are reviewed quickly and scoped within a clear, structured timeframe.",
   },
   {
-    title: "Local Execution in Israel",
+    title: "Local execution network",
     description:
-      "Deep network of suppliers, operators, and authorities across the country.",
+      "An established network of suppliers, operators, and authorities across Israel.",
   },
   {
-    title: "End-to-End Solutions",
+    title: "Integrated delivery",
     description:
-      "One coordinated partner for accommodation, infrastructure, equipment, and support.",
+      "Accommodation, infrastructure, equipment, and support coordinated under one point of contact.",
   },
   {
-    title: "Complex Requirement Ready",
+    title: "Multi-disciplinary capability",
     description:
-      "Built to handle multi-element, time-critical, and non-standard operations.",
+      "Structured to handle requirements that span multiple operational domains.",
   },
   {
-    title: "International Client Mindset",
+    title: "International working standards",
     description:
-      "Clear communication and workflows aligned with international counterparties.",
+      "Documentation, communication, and workflows aligned with international counterparties.",
   },
   {
-    title: "Operational, Not Theoretical",
+    title: "Operational focus",
     description:
-      "We are built to deliver on the ground — not to produce reports.",
+      "Our work is measured by on-the-ground delivery, not by documentation.",
   },
 ];
+
+export const whyAshchar = howWeOperate;
 
 export const howItWorks = [
   {
