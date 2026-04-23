@@ -20,7 +20,7 @@ export function OperationalScale({ t }: { t: Dict["operationalScale"] }) {
           </p>
         </div>
 
-        <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px overflow-hidden rounded-2xl border border-navy/10 bg-navy/10">
+        <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px overflow-hidden rounded-2xl border border-navy/10 bg-navy/10">
           {t.metrics.map((m) => (
             <div
               key={m.label}
