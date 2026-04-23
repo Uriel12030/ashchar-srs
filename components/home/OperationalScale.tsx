@@ -1,4 +1,5 @@
 import { Container } from "../Container";
+import { Counter } from "../Counter";
 import type { Dict } from "@/lib/i18n";
 
 export function OperationalScale({ t }: { t: Dict["operationalScale"] }) {
@@ -25,8 +26,8 @@ export function OperationalScale({ t }: { t: Dict["operationalScale"] }) {
               key={m.label}
               className="flex flex-col justify-between gap-8 bg-white p-8 lg:p-10"
             >
-              <dt className="font-display text-5xl lg:text-[64px] font-semibold leading-none tracking-tighter2 tabular-nums text-navy">
-                {m.value}
+              <dt className="font-display text-5xl lg:text-[64px] font-semibold leading-none tracking-tighter2 text-navy">
+                <Counter value={m.value} />
               </dt>
               <dd>
                 <p className="font-display text-base font-semibold text-navy">

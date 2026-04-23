@@ -1,4 +1,5 @@
 import { Container } from "@/components/Container";
+import { Counter } from "@/components/Counter";
 import { PageHero } from "@/components/PageHero";
 import type { Dict } from "@/lib/i18n";
 
@@ -57,8 +58,8 @@ export function AboutView({ t }: { t: Dict }) {
                   key={item.text}
                   className="flex items-baseline gap-6 border-t border-navy/10 py-5 last:border-b"
                 >
-                  <span className="min-w-[6rem] font-display text-2xl lg:text-3xl font-semibold tabular-nums text-navy">
-                    {item.value}
+                  <span className="min-w-[6rem] font-display text-2xl lg:text-3xl font-semibold text-navy">
+                    <Counter value={item.value} />
                   </span>
                   <span className="text-base leading-relaxed text-ink-muted">
                     {item.text}
