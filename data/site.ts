@@ -1,10 +1,12 @@
 export const site = {
   name: "Ashchar",
   url: "https://ashchar.com",
-  email: "info@ashchar.com",
-  whatsapp: "+972500000000",
+  email: "isaac@ashchar.com",
+  phone: "+972 52-377-7635",
+  whatsapp: "+972523777635",
   linkedin: "https://www.linkedin.com/company/ashchar",
   location: "Israel",
+  contactName: "Isaac",
   sam: {
     uei: "VJ23VL3BNJL8",
     ncage: "7006A",
@@ -23,3 +25,5 @@ export const mailto = (subject?: string) =>
   subject
     ? `mailto:${site.email}?subject=${encodeURIComponent(subject)}`
     : `mailto:${site.email}`;
+
+export const telLink = () => `tel:${site.phone.replace(/[^0-9+]/g, "")}`;

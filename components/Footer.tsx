@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { site, mailto, whatsappLink } from "@/data/site";
+import { site, mailto, whatsappLink, telLink } from "@/data/site";
 
 export function Footer() {
   return (
@@ -51,6 +51,11 @@ export function Footer() {
               Engage
             </div>
             <ul className="mt-4 space-y-2 text-[13px] text-graphite-100">
+              <li>
+                <a href={telLink()} className="hover:text-bone">
+                  {site.contactName} · {site.phone}
+                </a>
+              </li>
               <li>
                 <a href={mailto()} className="hover:text-bone">
                   {site.email}

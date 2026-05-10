@@ -63,7 +63,7 @@ export function Nav() {
             href="/contact"
             className="font-mono text-[10px] uppercase tracking-wider3 text-bone"
           >
-            +972 · Engage
+            +972 52-377-7635 · Engage
           </Link>
         </div>
 

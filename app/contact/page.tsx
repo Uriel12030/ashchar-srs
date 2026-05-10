@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, mailto, whatsappLink } from "@/data/site";
+import { site, mailto, whatsappLink, telLink } from "@/data/site";
 import { Reveal } from "@/components/Reveal";
 import { CinemaImage } from "@/components/CinemaImage";
 import { heroImages } from "@/data/content";
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 };
 
 const channels = [
+  { label: "Direct", value: `${site.contactName} · ${site.phone}`, href: telLink() },
   { label: "Email", value: site.email, href: mailto() },
-  { label: "WhatsApp", value: "Direct line", href: whatsappLink() },
-  { label: "LinkedIn", value: "Company page", href: site.linkedin },
+  { label: "WhatsApp", value: site.phone, href: whatsappLink() },
 ];
 
 export default function ContactPage() {

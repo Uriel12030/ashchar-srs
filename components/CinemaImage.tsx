@@ -19,6 +19,10 @@ type Props = {
  * Quiet fade-in image with documentary grading. Uses next/image for
  * automatic optimization (WebP/AVIF, responsive sizes) — files in /public
  * are served at the optimal resolution per device.
+ *
+ * The wrapper has no positioning of its own — every caller supplies one
+ * (e.g. `absolute inset-0` for a hero overlay). next/image with `fill`
+ * needs a positioned ancestor for dimensions; the caller's class provides it.
  */
 export function CinemaImage({
   src,
@@ -32,7 +36,7 @@ export function CinemaImage({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={`relative overflow-hidden bg-graphite-900 ${className}`}>
+    <div className={`overflow-hidden bg-graphite-900 ${className}`}>
       <Image
         src={src}
         alt={alt}
