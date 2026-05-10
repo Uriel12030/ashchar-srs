@@ -10,54 +10,51 @@ if (!KEY) {
 const OUT = "public/images/generated";
 mkdirSync(OUT, { recursive: true });
 
+// Documentary-style prompts. Strong anti-CGI / anti-illustration language so
+// the model leans toward grounded, plausible field photography.
+const ANCHORS =
+  "Realistic documentary photograph, shot on a full-frame camera, natural daylight, candid composition, slightly imperfect framing, real-world dust and wear, no cinematic exaggeration, no fantasy lighting, no CGI, no 3D render, no illustration, no painterly effects, no text or numbers, no logos, no soldiers, no weapons, no military uniforms, no flags, no obvious AI artifacts.";
+
 const PROMPTS = [
   {
     name: "hero-operational-logistics",
     size: "1536x1024",
-    prompt:
-      "Ultra-realistic wide cinematic scene of operational logistics support in Israel, white SUVs, pickup trucks, vans and logistics trucks lined up near modular office units and temporary infrastructure, Middle East desert environment, golden hour lighting, premium U.S. government contractor aesthetic, professional, serious, no soldiers, no weapons, no flags, no text, documentary photography style.",
+    prompt: `Wide angle view of a working operations yard in Israel. Several white pickup trucks and SUVs parked near a row of modular office trailers. Gravel ground. A lighting tower and a generator visible in the background. Practical contractor logistics environment. ${ANCHORS}`,
   },
   {
     name: "fleet-vehicles-israel",
     size: "1536x1024",
-    prompt:
-      "Modern white operational vehicle fleet in Israel including Toyota Land Cruisers, Hilux-style pickups, passenger vans and SUVs lined up in a professional logistics yard, clean but field-ready, cinematic golden hour lighting, realistic corporate defense logistics atmosphere, no branding, no soldiers, no weapons, wide angle documentary style.",
+    prompt: `White Toyota Hilux pickups, Land Cruisers, and passenger vans lined up in a dusty gravel operations yard in Israel. Late afternoon sun. Vehicles are clean but in real working condition with light dust on tires. Simple fencing in background. No logos, no markings. ${ANCHORS}`,
   },
   {
     name: "modular-housing-base-support",
     size: "1536x1024",
-    prompt:
-      "High-end modular office and temporary housing compound in a Middle East operational environment, clean portable buildings, generators, lighting towers, communication equipment, gravel ground, realistic government contractor base support atmosphere, cinematic dusk lighting, no people, no weapons, no text.",
+    prompt: `Row of beige and white modular office and accommodation units in a gravel compound in Israel. Exterior generator and HVAC condenser units sitting alongside the buildings. Gravel surface. Mid-day flat daylight. No people. Practical contractor base support, simple and functional. ${ANCHORS}`,
   },
   {
     name: "heavy-equipment-infrastructure",
     size: "1536x1024",
-    prompt:
-      "Heavy equipment supporting rapid infrastructure deployment in Middle East terrain, cranes, forklifts, excavators and logistics trucks working around modular infrastructure, realistic dust atmosphere, professional operational contractor style, cinematic lighting, no military vehicles, no weapons, no soldiers.",
+    prompt: `Yellow forklifts and a flatbed truck working near rows of stacked metal shipping containers in a Middle East operations yard. Some dust in the air. Gravel surface. Real working environment, candid. ${ANCHORS}`,
   },
   {
     name: "rapid-procurement-operations",
     size: "1536x1024",
-    prompt:
-      "Professional logistics coordination and rapid procurement operations room, modern screens showing maps and supply chain dashboards, serious operations staff working, dark premium corporate atmosphere, realistic, no stock photo look, no visible logos, no text.",
+    prompt: `A logistics coordinator in plain civilian clothing working at a laptop with a phone on the desk inside a modest field trailer office. Simple desk, paperwork, a printed map pinned to the wall, available natural light through a window. Real practical workspace, no stock photo styling, no fake smiling. ${ANCHORS}`,
   },
   {
     name: "force-protection-infrastructure",
     size: "1536x1024",
-    prompt:
-      "Concrete protective barriers and modular infrastructure being positioned by crane in a secure operational compound, Middle East environment, realistic contractor field operations, premium defense infrastructure support aesthetic, no soldiers, no weapons, no flags, no combat.",
+    prompt: `Gray concrete T-wall and Jersey-barrier protective barriers staged in rows in a gravel yard with a mobile crane positioned alongside, ready to lift one. Middle East operations site. Daylight. Dusty practical contractor environment. No people in the frame. ${ANCHORS}`,
   },
   {
     name: "about-field-operations",
     size: "1536x1024",
-    prompt:
-      "Professional operations manager inspecting field logistics site in Israel, vehicle fleet and modular infrastructure visible in background, serious documentary photography style, premium U.S. government contractor aesthetic, no weapons, no soldiers, no text.",
+    prompt: `A civilian operations manager in plain workwear (cargo pants, polo shirt, baseball cap) walking through a logistics yard in Israel and inspecting equipment with a clipboard. Modular trailers and white pickup trucks visible in the background. Gravel ground. Candid documentary moment. ${ANCHORS}`,
   },
   {
     name: "operations-control-room",
     size: "1536x1024",
-    prompt:
-      "Minimal premium logistics operations center, dark modern office with large screens showing transportation routes and infrastructure coordination maps, serious professional atmosphere, cinematic lighting, realistic, no branding, no readable text.",
+    prompt: `A real working logistics operations office with two operators at desks with regular consumer-grade computer monitors showing simple map applications and spreadsheets. Plain office walls, normal fluorescent and ambient lighting, paperwork on desks. Modest practical workspace, not futuristic. ${ANCHORS}`,
   },
 ];
 
@@ -91,7 +88,6 @@ async function gen(p) {
   console.log(`✓ ${p.name}.png  (${secs}s, ${(buf.length / 1024).toFixed(0)}KB)`);
 }
 
-// Limit concurrency to avoid rate limits
 const queue = [...PROMPTS];
 const workers = 3;
 async function worker() {
