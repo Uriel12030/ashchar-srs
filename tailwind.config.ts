@@ -9,67 +9,85 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark primary — deep teal, aligned with brand text color.
-        navy: {
-          DEFAULT: "#0F2A2D",
-          50: "#F0F5F5",
-          100: "#D5E2E1",
-          200: "#ABC4C3",
-          300: "#739C9A",
-          400: "#457571",
-          500: "#25525D",
-          600: "#1A3D42",
-          700: "#122E32",
-          800: "#0F2A2D",
-          900: "#081518",
-        },
-        // Brand teal-green — from the logo mark.
-        accent: {
-          DEFAULT: "#399189",
-          hover: "#2E7B74",
-          dark: "#256962",
-        },
-        // Brand muted gray-blue — secondary mark color.
-        slate2: {
-          DEFAULT: "#A0A8BC",
-          soft: "#C4CAD6",
-          deep: "#7E8699",
-        },
+        // Matte black + graphite
         ink: {
-          DEFAULT: "#0F2A2D",
-          muted: "#4A5763",
-          soft: "#6B7680",
+          DEFAULT: "#0A0A0A",
+          deep: "#050505",
+          black: "#000000",
         },
-        surface: {
-          DEFAULT: "#FFFFFF",
-          soft: "#F4F7F7",
-          muted: "#E7EDED",
+        graphite: {
+          900: "#0F0F10",
+          800: "#141416",
+          700: "#1A1A1D",
+          600: "#23232A",
+          500: "#2D2D35",
+          400: "#3B3B45",
+          300: "#54545F",
+          200: "#7A7A85",
+          100: "#A8A8B0",
+        },
+        // Off-white
+        bone: {
+          DEFAULT: "#EDEAE0",
+          50: "#F7F6F1",
+          100: "#EDEAE0",
+          200: "#D9D5C7",
+          300: "#B5AF9D",
+        },
+        // Muted military green accent
+        olive: {
+          DEFAULT: "#5C6B4C",
+          light: "#7A8B69",
+          dark: "#3F4A33",
+          deep: "#2A3322",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heebo: ["var(--font-heebo)", "var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
+        display: [
+          "var(--font-display)",
+          "var(--font-inter)",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
-        container: "1240px",
+        container: "1440px",
+        readable: "640px",
       },
-      boxShadow: {
-        card: "0 1px 2px rgba(15, 42, 45, 0.04), 0 4px 16px rgba(15, 42, 45, 0.06)",
-        cardHover:
-          "0 2px 4px rgba(15, 42, 45, 0.06), 0 12px 32px rgba(15, 42, 45, 0.12)",
+      fontSize: {
+        // Cinematic display sizes
+        "display-xl": ["clamp(56px, 11vw, 184px)", { lineHeight: "0.92", letterSpacing: "-0.045em" }],
+        "display-lg": ["clamp(44px, 7.6vw, 128px)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
+        "display-md": ["clamp(36px, 5.4vw, 88px)", { lineHeight: "1", letterSpacing: "-0.035em" }],
       },
       letterSpacing: {
-        tightish: "-0.015em",
-        tighter2: "-0.025em",
+        ultratight: "-0.045em",
+        tightish: "-0.02em",
+        wider2: "0.2em",
+        wider3: "0.32em",
+      },
+      transitionTimingFunction: {
+        cinema: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       animation: {
-        "fade-in-up": "fadeInUp 0.6s ease-out forwards",
+        "fade-in": "fadeIn 1.2s ease-out forwards",
+        "fade-up": "fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "shimmer": "shimmer 8s linear infinite",
       },
       keyframes: {
-        fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeUp: {
+          "0%": { opacity: "0", transform: "translateY(24px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "200% 50%" },
         },
       },
     },

@@ -1,64 +1,51 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Heebo } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { site } from "@/data/site";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const heebo = Heebo({
-  subsets: ["latin", "hebrew"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-heebo",
+const display = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL("https://ashchar.com"),
   title: {
-    default: `${site.fullName} — Rapid Logistics & Operational Solutions in Israel`,
-    template: `%s — ${site.fullName}`,
+    default: "Ashchar — Operational Infrastructure & Logistics Support in Israel",
+    template: "%s — Ashchar",
   },
-  description: site.description,
-  keywords: [
-    "logistics Israel",
-    "infrastructure Israel",
-    "accommodation Israel",
-    "government logistics",
-    "defense logistics",
-    "operational solutions",
-    "modular buildings Israel",
-    "heavy equipment rental Israel",
-    "Ashchar",
-  ],
+  description:
+    "Rapid deployment solutions for defense and commercial operations. Modular facilities, reinforced bunkers, heavy equipment, fleets, and site development across Israel.",
   openGraph: {
     type: "website",
-    title: `${site.fullName} — Rapid Logistics & Operational Solutions in Israel`,
-    description: site.description,
-    siteName: site.fullName,
+    title: "Ashchar — Operational Infrastructure & Logistics Support in Israel",
+    description:
+      "Rapid deployment solutions for defense and commercial operations across Israel.",
+    siteName: "Ashchar",
     locale: "en_US",
-    alternateLocale: "he_IL",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: site.fullName,
-    description: site.description,
-  },
-  alternates: {
-    languages: {
-      en: "/",
-      he: "/he",
-    },
   },
   robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0F2A2D",
+  themeColor: "#0A0A0A",
   width: "device-width",
   initialScale: 1,
 };
@@ -69,15 +56,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${heebo.variable}`}>
-      <body className="min-h-screen bg-white text-navy antialiased selection:bg-accent/30 selection:text-navy">
+    <html
+      lang="en"
+      className={`${inter.variable} ${display.variable} ${mono.variable}`}
+    >
+      <body className="min-h-screen bg-ink text-bone antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-navy"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-bone focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink"
         >
           Skip to content
         </a>
-        {children}
+        <Nav />
+        <main id="main">{children}</main>
+        <Footer />
       </body>
     </html>
   );

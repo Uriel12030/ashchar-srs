@@ -1,124 +1,105 @@
 import Link from "next/link";
-import { Container } from "./Container";
-import { Logo } from "./Logo";
-import { Icon } from "./Icons";
-import type { Dict, Locale } from "@/lib/i18n";
-import { contact, mailtoLink, site, telLink, whatsappLink } from "@/data/site";
+import { site, mailto, whatsappLink } from "@/data/site";
 
-export function Footer({ t }: { t: Dict }) {
-  const year = new Date().getFullYear();
-  const servicesBase = t.locale === "he" ? "/he/services" : "/services";
-  const locationLabel = t.locale === "he" ? "ישראל" : "Israel";
+export function Footer() {
   return (
-    <footer className="bg-navy text-white/80">
-      <Container className="py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr]">
-          <div>
-            <Logo variant="light" href={t.home} />
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/60">
-              {t.footer.descriptor}
+    <footer className="border-t hairline bg-ink">
+      <div className="mx-auto max-w-container px-6 py-14 md:px-10 md:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Link
+              href="/"
+              className="font-display text-[15px] tracking-tightish text-bone"
+            >
+              ASHCHAR
+            </Link>
+            <p className="mt-6 max-w-[36ch] text-[13px] font-light leading-relaxed text-graphite-100">
+              Operational infrastructure and logistics support across Israel.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              {t.footer.company}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {t.nav.map((n) => (
-                <li key={n.href}>
-                  <Link
-                    href={n.href}
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    {n.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              {t.footer.services}
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
-              {t.services.services.slice(0, 6).map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`${servicesBase}#${s.slug}`}
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
+          <div className="md:col-span-3">
+            <div className="text-[10px] uppercase tracking-wider3 text-graphite-200">
+              Sectors
+            </div>
+            <ul className="mt-4 space-y-2 text-[13px] text-graphite-100">
               <li>
-                <Link
-                  href={servicesBase}
-                  className="text-accent hover:text-accent-hover transition-colors inline-flex items-center gap-1.5"
-                >
-                  {t.footer.allServices}
-                  <Icon name="arrow-right" size={14} />
+                <Link href="/government" className="hover:text-bone">
+                  Government & Defense
+                </Link>
+              </li>
+              <li>
+                <Link href="/commercial" className="hover:text-bone">
+                  Commercial Operations
+                </Link>
+              </li>
+              <li>
+                <Link href="/capabilities" className="hover:text-bone">
+                  Capabilities
+                </Link>
+              </li>
+              <li>
+                <Link href="/projects" className="hover:text-bone">
+                  Projects
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-              {t.footer.contact}
-            </h3>
-            <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <Icon name="mail" size={18} className="mt-0.5 text-accent" />
-                <a
-                  href={mailtoLink()}
-                  className="text-white/80 hover:text-white transition-colors"
-                  dir="ltr"
-                >
-                  {contact.email}
+          <div className="md:col-span-4">
+            <div className="text-[10px] uppercase tracking-wider3 text-graphite-200">
+              Engage
+            </div>
+            <ul className="mt-4 space-y-2 text-[13px] text-graphite-100">
+              <li>
+                <a href={mailto()} className="hover:text-bone">
+                  {site.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Icon name="phone" size={18} className="mt-0.5 text-accent" />
-                <a
-                  href={telLink()}
-                  className="text-white/80 hover:text-white transition-colors"
-                  dir="ltr"
-                >
-                  {contact.phone}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Icon name="whatsapp" size={18} className="mt-0.5 text-accent" />
+              <li>
                 <a
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors"
+                  className="hover:text-bone"
                 >
                   WhatsApp
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Icon name="location" size={18} className="mt-0.5 text-accent" />
-                <span className="text-white/80">{locationLabel}</span>
+              <li>
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-bone"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-bone">
+                  Contact form
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-xs text-white/50">
-            © {year} {site.fullName}. {t.footer.rights}
-          </p>
-          <p className="text-xs text-white/50">{t.footer.descriptor}</p>
+        <div className="mt-16 h-px divider-line md:mt-20" />
+
+        <div className="mt-8 flex flex-col gap-4 text-[10px] uppercase tracking-wider3 text-graphite-200 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <span>© {new Date().getFullYear()} Ashchar Ltd.</span>
+            <span>{site.location}</span>
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono">
+            <span>SAM {site.sam.status}</span>
+            <span>UEI {site.sam.uei}</span>
+            <span>NCAGE {site.sam.ncage}</span>
+            <span>Israel-Based OCONUS Support</span>
+          </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
-
-// Guard unused types/parameters
-export type _FooterLocaleRef = Locale;
