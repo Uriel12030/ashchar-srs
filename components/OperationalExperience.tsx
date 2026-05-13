@@ -63,15 +63,7 @@ export function OperationalExperience({ locale }: { locale: Locale }) {
               {entries.map((e, i) => (
                 <Reveal key={e.name} delay={Math.min(i * 0.04, 0.32)}>
                   <li className="group flex h-full min-h-[160px] flex-col items-center justify-center gap-5 bg-ink px-4 py-10 transition-colors duration-500 hover:bg-graphite-900/60 md:min-h-[180px] md:px-6">
-                    <div
-                      className="flex h-14 items-center justify-center opacity-65 transition-opacity duration-500 group-hover:opacity-100 md:h-16"
-                      style={{
-                        // Convert any source artwork (color seals, dark
-                        // wordmarks, custom white SVGs) into a unified
-                        // white silhouette on dark background.
-                        filter: "brightness(0) invert(1)",
-                      }}
-                    >
+                    <div className="flex h-14 items-center justify-center opacity-85 transition-opacity duration-500 group-hover:opacity-100 md:h-16">
                       <Image
                         src={e.logo}
                         alt={`${e.name} reference`}
