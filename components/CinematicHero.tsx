@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import { CinemaImage } from "./CinemaImage";
+import { dict, type Locale } from "@/lib/i18n";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 type Props = {
+  locale: Locale;
   eyebrow: string;
   headline: string;
   sub?: string;
@@ -14,12 +16,16 @@ type Props = {
 };
 
 export function CinematicHero({
+  locale,
   eyebrow,
   headline,
   sub,
   image,
   showScrollHint = false,
 }: Props) {
+  const t = dict[locale];
+  const isHe = locale === "he";
+
   return (
     <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
       <CinemaImage
@@ -32,25 +38,30 @@ export function CinematicHero({
       <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/55 to-ink" />
       <div className="pointer-events-none absolute inset-0 grain" />
 
-      {/* Top-left coordinates / status — discreet operator feel */}
+      {/* Top-left coordinates / theatre — discreet operator feel */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4, ease, delay: 0.6 }}
-        className="absolute left-6 top-24 z-10 hidden font-mono text-[10px] uppercase tracking-wider3 text-graphite-200 md:left-10 md:top-28 md:block"
+        className={`absolute top-24 z-10 hidden font-mono text-[10px] uppercase tracking-wider3 text-graphite-200 md:top-28 md:block ${
+          isHe ? "right-6 md:right-10" : "left-6 md:left-10"
+        }`}
       >
-        <div>31.7683° N · 35.2137° E</div>
-        <div className="mt-1">Israel — Operational Theatre</div>
+        <div>{t.hero.coords}</div>
+        <div className="mt-1">{t.hero.theatre}</div>
       </motion.div>
 
+      {/* Top-right registration metadata */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.4, ease, delay: 0.6 }}
-        className="absolute right-6 top-24 z-10 hidden font-mono text-[10px] uppercase tracking-wider3 text-graphite-200 md:right-10 md:top-28 md:block"
+        className={`absolute top-24 z-10 hidden font-mono text-[10px] uppercase tracking-wider3 text-graphite-200 md:top-28 md:block ${
+          isHe ? "left-6 md:left-10 text-left" : "right-6 md:right-10 text-right"
+        }`}
       >
-        <div className="text-right">UEI · VJ23VL3BNJL8</div>
-        <div className="mt-1 text-right">NCAGE · 7006A</div>
+        <div>UEI · VJ23VL3BNJL8</div>
+        <div className="mt-1">NCAGE · 7006A</div>
       </motion.div>
 
       <div className="relative z-10 mx-auto flex h-full max-w-container flex-col justify-end px-6 pb-16 md:px-10 md:pb-24">
@@ -93,7 +104,7 @@ export function CinematicHero({
           className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] uppercase tracking-wider3 text-graphite-200"
         >
           <div className="flex flex-col items-center gap-3">
-            <span>Scroll</span>
+            <span>{t.common.scroll}</span>
             <span className="block h-8 w-px bg-graphite-200/60" />
           </div>
         </motion.div>

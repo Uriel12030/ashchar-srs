@@ -4,28 +4,31 @@ import Link from "next/link";
 import { useState } from "react";
 import { CinemaImage } from "./CinemaImage";
 import { Reveal } from "./Reveal";
+import { dict, localePath, type Locale } from "@/lib/i18n";
 
-const pathways = [
-  {
-    href: "/government",
-    eyebrow: "Pathway · 01",
-    sector: "Government & Defense",
-    title: "Mission-critical BOS support.",
-    body: "BOS/BOS-I support capabilities for U.S. Government, military, and prime contractor operations.",
-    image: "/images/generated/force-protection-infrastructure.jpg",
-  },
-  {
-    href: "/commercial",
-    eyebrow: "Pathway · 02",
-    sector: "Commercial Operations",
-    title: "Industrial scale. Operational discipline.",
-    body: "Fleet, billeting, logistics, and field support for private-sector operators.",
-    image: "/images/generated/fleet-vehicles-israel.jpg",
-  },
-];
-
-export function PathwaysSplit() {
+export function PathwaysSplit({ locale }: { locale: Locale }) {
+  const t = dict[locale].pathways;
+  const common = dict[locale].common;
   const [hovered, setHovered] = useState<number | null>(null);
+
+  const pathways = [
+    {
+      href: localePath(locale, "/government"),
+      eyebrow: t.govEyebrow,
+      sector: t.govSector,
+      title: t.govTitle,
+      body: t.govBody,
+      image: "/images/generated/force-protection-infrastructure.jpg",
+    },
+    {
+      href: localePath(locale, "/commercial"),
+      eyebrow: t.commEyebrow,
+      sector: t.commSector,
+      title: t.commTitle,
+      body: t.commBody,
+      image: "/images/generated/fleet-vehicles-israel.jpg",
+    },
+  ];
 
   return (
     <section className="relative bg-ink">
@@ -33,12 +36,12 @@ export function PathwaysSplit() {
         <Reveal>
           <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
             <span className="block h-px w-14 bg-olive-light" />
-            <span>Operating contexts</span>
+            <span>{t.eyebrow}</span>
           </div>
         </Reveal>
         <Reveal delay={0.05}>
           <h2 className="mt-8 max-w-[20ch] font-display text-display-md font-light text-bone">
-            Government missions. Commercial operations.
+            {t.title}
           </h2>
         </Reveal>
       </div>
@@ -60,7 +63,7 @@ export function PathwaysSplit() {
                 src={p.image}
                 alt={p.sector}
                 className="absolute inset-0"
-                imgClassName={`opacity-55 transition-opacity duration-[1600ms] ease-cinema group-hover:opacity-70`}
+                imgClassName="opacity-55 transition-opacity duration-[1600ms] ease-cinema group-hover:opacity-70"
                 sizes="(min-width: 768px) 50vw, 100vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/25" />
@@ -80,7 +83,7 @@ export function PathwaysSplit() {
                 </p>
                 <div className="mt-12 flex items-center gap-4 text-[11px] uppercase tracking-wider2 text-bone">
                   <span className="block h-px w-10 bg-bone transition-all duration-700 ease-cinema group-hover:w-16" />
-                  <span>Enter</span>
+                  <span>{common.enter}</span>
                 </div>
               </div>
             </Link>

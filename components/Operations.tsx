@@ -1,18 +1,20 @@
 "use client";
 
-import { projects, type Project } from "@/data/content";
+import { getProjects, type Project } from "@/data/content";
 import { CinemaImage } from "./CinemaImage";
 import { Reveal } from "./Reveal";
+import { dict, type Locale } from "@/lib/i18n";
 
 type Props = {
+  locale: Locale;
   filter?: Project["category"];
   withHeader?: boolean;
 };
 
-export function Operations({ filter, withHeader = true }: Props) {
-  const list = filter
-    ? projects.filter((p) => p.category === filter)
-    : projects;
+export function Operations({ locale, filter, withHeader = true }: Props) {
+  const t = dict[locale].operations;
+  const all = getProjects(locale);
+  const list = filter ? all.filter((p) => p.category === filter) : all;
 
   return (
     <section className="relative border-t hairline bg-ink">
@@ -22,12 +24,12 @@ export function Operations({ filter, withHeader = true }: Props) {
             <Reveal>
               <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
                 <span className="block h-px w-14 bg-olive-light" />
-                <span>Selected operations</span>
+                <span>{t.eyebrow}</span>
               </div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-8 max-w-[18ch] font-display text-display-md font-light text-bone">
-                Executed in theatre.
+                {t.title}
               </h2>
             </Reveal>
           </div>
@@ -65,7 +67,8 @@ export function Operations({ filter, withHeader = true }: Props) {
                     }`}
                   >
                     <div className="font-mono text-[10px] uppercase tracking-wider3 text-olive-light">
-                      Op {String(i + 1).padStart(2, "0")} · {p.category}
+                      {t.opLabel} {String(i + 1).padStart(2, "0")} ·{" "}
+                      {p.categoryLabel}
                     </div>
                     <h3 className="mt-6 font-display text-3xl font-light leading-[1.05] tracking-ultratight text-bone md:text-5xl">
                       {p.title}

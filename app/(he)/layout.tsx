@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
+import { Inter, Inter_Tight, JetBrains_Mono, Heebo } from "next/font/google";
+import "../globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { dict } from "@/lib/i18n";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,11 +26,17 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const ogTitle = "Ashchar — Operational Support in Israel";
-const ogDescription =
-  "Transportation, billeting, cargo movement, and operational support services across Israel.";
+const heebo = Heebo({
+  subsets: ["hebrew", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-heebo",
+  display: "swap",
+});
+
+const ogTitle = dict.he.pages.home.metaTitle;
+const ogDescription = dict.he.pages.home.metaDescription;
 const ogImageAlt =
-  "Ashchar — operational support scene in Israel showing passenger vans, SUVs, a shuttle bus parked near modern Mediterranean-style accommodation, and cargo handling with a forklift.";
+  "אשחר — סצנת תמיכה מבצעית בישראל המציגה ואנים לבנים, ג׳יפים, אוטובוס שאטל ליד מבנה אכלוס בסגנון ים-תיכוני מודרני ושינוע מטענים במלגזה.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashcharops.com"),
@@ -38,13 +45,20 @@ export const metadata: Metadata = {
     template: "%s — Ashchar",
   },
   description: ogDescription,
+  alternates: {
+    languages: {
+      en: "https://ashcharops.com/",
+      he: "https://ashcharops.com/he",
+    },
+  },
   openGraph: {
     type: "website",
-    url: "https://ashcharops.com",
+    url: "https://ashcharops.com/he",
     title: ogTitle,
     description: ogDescription,
     siteName: "Ashchar",
-    locale: "en_US",
+    locale: "he_IL",
+    alternateLocale: "en_US",
     images: [
       {
         url: "/opengraph-image.jpg",
@@ -75,26 +89,27 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default function HeRootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html
-      lang="en"
-      className={`${inter.variable} ${display.variable} ${mono.variable}`}
+      lang="he"
+      dir="rtl"
+      className={`${inter.variable} ${display.variable} ${mono.variable} ${heebo.variable}`}
     >
-      <body className="min-h-screen bg-ink text-bone antialiased">
+      <body className="min-h-screen bg-ink text-bone antialiased font-hebrew">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-bone focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:right-4 focus:top-4 focus:z-50 focus:rounded focus:bg-bone focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink"
         >
-          Skip to content
+          דלג לתוכן
         </a>
-        <Nav />
+        <Nav locale="he" />
         <main id="main">{children}</main>
-        <Footer />
+        <Footer locale="he" />
       </body>
     </html>
   );

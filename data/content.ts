@@ -1,148 +1,134 @@
-export const metrics = [
-  { value: 600, suffix: "+", label: "Billeting Units Deployed" },
-  { value: 300, suffix: "+", label: "Vehicles in Fleet" },
-  { value: 80, suffix: "+", label: "Heavy Equipment Assets" },
-  { value: 24, suffix: "/7", label: "Operational Coordination" },
-];
-
-// Compact credibility row near the hero — registration + posture, nothing flashy.
-export const trustSignals = [
-  "SAM Registered",
-  "UEI: VJ23VL3BNJL8",
-  "NCAGE: 7006A",
-  "Israel-Based OCONUS Support",
-];
-
-// Concise credibility statements used in the Mission Execution section.
-export const credibility = [
-  "Trusted by U.S. Government and prime contractor teams operating in Israel.",
-  "Experienced in urgent field requirements, controlled-access environments, and mission-critical timelines.",
-  "Local execution with regional logistics reach.",
-];
+import { dict, type Locale } from "@/lib/i18n";
 
 const IMG = "/images/generated";
 
+/* ---------- Metrics ---------- */
+
+export type MetricKey = "housing" | "vehicles" | "equipment" | "coord";
+
+export type Metric = {
+  key: MetricKey;
+  value: number;
+  suffix: string;
+  label: string;
+};
+
+const metricBase: { key: MetricKey; value: number; suffix: string }[] = [
+  { key: "housing", value: 600, suffix: "+" },
+  { key: "vehicles", value: 300, suffix: "+" },
+  { key: "equipment", value: 80, suffix: "+" },
+  { key: "coord", value: 24, suffix: "/7" },
+];
+
+export const getMetrics = (locale: Locale): Metric[] =>
+  metricBase.map((m) => ({ ...m, label: dict[locale].metrics[m.key] }));
+
+/* ---------- Trust signals ---------- */
+
+export const getTrustSignals = (locale: Locale): string[] => {
+  const t = dict[locale].trust;
+  return [t.sam, t.uei, t.ncage, t.oconus];
+};
+
+/* ---------- Capabilities ---------- */
+
+export type CapabilitySlug =
+  | "base-operational-support"
+  | "ground-transportation"
+  | "cargo-equipment-movement"
+  | "cross-border-logistics"
+  | "fleet-operations"
+  | "billeting-life-support"
+  | "airfield-remote-site"
+  | "rapid-deployment-contingency";
+
 export type Capability = {
-  slug: string;
-  /** Short label used in nav-style listings. */
+  slug: CapabilitySlug;
   title: string;
-  /** Two- or three-word summary used on the homepage index. */
   short: string;
-  /** Single-paragraph description used on the /capabilities page. */
   description: string;
   image: string;
 };
 
-/**
- * The eight Operational Support Capabilities. Terminology is intentionally
- * aligned with U.S. Government BOS/BOS-I language without claiming a prime
- * designation — we support BOS/BOS-I requirements as a regional contractor.
- */
-export const capabilities: Capability[] = [
-  {
-    slug: "base-operational-support",
-    title: "Base Operational Support",
-    short: "BOS / BOS-I support capabilities.",
-    description:
-      "Integrated support for base operations, field services, vendor coordination, equipment, housing, transport, and life-support needs. BOS/BOS-I support capabilities scaled to the requirement.",
-    image: `${IMG}/about-field-operations.jpg`,
-  },
-  {
-    slug: "ground-transportation",
-    title: "Ground Transportation & Shuttle Operations",
-    short: "Personnel movement, scheduled and ad-hoc.",
-    description:
-      "Personnel movement, scheduled and ad-hoc shuttles, buses, vans, executive vehicles, and mission-specific transportation. Movement control across forward and rear sites.",
-    image: `${IMG}/fleet-vehicles-israel.jpg`,
-  },
-  {
-    slug: "cargo-equipment-movement",
-    title: "Cargo & Equipment Movement (GLOC)",
-    short: "Ground lines of communication.",
-    description:
-      "Ground movement of equipment, supplies, containers, and mission cargo along approved logistics routes. GLOC execution, staging, and forward delivery.",
-    image: `${IMG}/heavy-equipment-infrastructure.jpg`,
-  },
-  {
-    slug: "cross-border-logistics",
-    title: "Cross-Border Logistics",
-    short: "Regional staging, transfer, customs.",
-    description:
-      "Coordination of regional cargo movement, staging, border transfer, customs support, and partner-network execution. Regional reach with local execution.",
-    image: `${IMG}/operations-control-room.jpg`,
-  },
-  {
-    slug: "fleet-operations",
-    title: "Fleet & Vehicle Operations",
-    short: "Passenger, transport, maintenance.",
-    description:
-      "Passenger vehicles, SUVs, pickups, vans, buses, maintenance coordination, replacement vehicles, and operational fleet management. Long-term and surge capacity.",
-    image: `${IMG}/fleet-vehicles-israel.jpg`,
-  },
-  {
-    slug: "billeting-life-support",
-    title: "Billeting & Life Support Services",
-    short: "Housing, sanitation, sustainment.",
-    description:
-      "Housing, hotels, temporary lodging, cleaning, water, sanitation, office support, and daily operational sustainment. Practical billeting at scale.",
-    image: `${IMG}/modular-housing-base-support.jpg`,
-  },
-  {
-    slug: "airfield-remote-site",
-    title: "Airfield & Remote Site Support",
-    short: "Air bases, remote OPs, staging areas.",
-    description:
-      "Support for air bases, remote operating sites, staging areas, temporary compounds, and fast-changing mission locations. Forward logistics and on-site coordination.",
-    image: `${IMG}/hero-operational-logistics.jpg`,
-  },
-  {
-    slug: "rapid-deployment-contingency",
-    title: "Rapid Deployment & Contingency Support",
-    short: "Fast sourcing, mobilization, field execution.",
-    description:
-      "Fast sourcing, mobilization, vendor coordination, equipment delivery, and field execution under urgent timelines. Contingency-ready posture.",
-    image: `${IMG}/rapid-procurement-operations.jpg`,
-  },
+const capabilityImages: Record<CapabilitySlug, string> = {
+  "base-operational-support": `${IMG}/about-field-operations.jpg`,
+  "ground-transportation": `${IMG}/fleet-vehicles-israel.jpg`,
+  "cargo-equipment-movement": `${IMG}/heavy-equipment-infrastructure.jpg`,
+  "cross-border-logistics": `${IMG}/operations-control-room.jpg`,
+  "fleet-operations": `${IMG}/fleet-vehicles-israel.jpg`,
+  "billeting-life-support": `${IMG}/modular-housing-base-support.jpg`,
+  "airfield-remote-site": `${IMG}/hero-operational-logistics.jpg`,
+  "rapid-deployment-contingency": `${IMG}/rapid-procurement-operations.jpg`,
+};
+
+const capabilityOrder: CapabilitySlug[] = [
+  "base-operational-support",
+  "ground-transportation",
+  "cargo-equipment-movement",
+  "cross-border-logistics",
+  "fleet-operations",
+  "billeting-life-support",
+  "airfield-remote-site",
+  "rapid-deployment-contingency",
 ];
 
+export const getCapabilities = (locale: Locale): Capability[] =>
+  capabilityOrder.map((slug) => ({
+    slug,
+    ...dict[locale].capabilities.items[slug],
+    image: capabilityImages[slug],
+  }));
+
+/* ---------- Projects ---------- */
+
+export type ProjectSlug =
+  | "force-protection-deployment"
+  | "billeting-program"
+  | "rapid-procurement-program";
+
 export type Project = {
-  slug: string;
+  slug: ProjectSlug;
   title: string;
   category: "Government" | "Commercial";
+  categoryLabel: string;
   blurb: string;
   image: string;
   meta: string;
 };
 
-export const projects: Project[] = [
+const projectShape: {
+  slug: ProjectSlug;
+  category: "Government" | "Commercial";
+  image: string;
+}[] = [
   {
     slug: "force-protection-deployment",
-    title: "Force Protection Infrastructure",
     category: "Government",
-    meta: "Multi-site / Compressed timeline",
-    blurb:
-      "Hardened protective barriers and modular infrastructure positioned across forward operational sites.",
     image: `${IMG}/force-protection-infrastructure.jpg`,
   },
   {
     slug: "billeting-program",
-    title: "Billeting Program at Scale",
     category: "Commercial",
-    meta: "600+ units / Sustained ops",
-    blurb:
-      "Modular accommodation program with full life-support, climate control, and 24/7 site management.",
     image: `${IMG}/modular-housing-base-support.jpg`,
   },
   {
     slug: "rapid-procurement-program",
-    title: "Rapid Procurement & Movement",
     category: "Government",
-    meta: "Time-critical / Multi-vendor",
-    blurb:
-      "End-to-end sourcing, GLOC routing, and forward delivery for time-critical operational requirements.",
     image: `${IMG}/about-field-operations.jpg`,
   },
 ];
+
+export const getProjects = (locale: Locale): Project[] =>
+  projectShape.map((p) => ({
+    ...p,
+    ...dict[locale].operations.items[p.slug],
+    categoryLabel:
+      p.category === "Government"
+        ? dict[locale].operations.catGovernment
+        : dict[locale].operations.catCommercial,
+  }));
+
+/* ---------- Hero images (locale-agnostic) ---------- */
 
 export const heroImages = {
   home: `${IMG}/hero-operational-logistics.jpg`,

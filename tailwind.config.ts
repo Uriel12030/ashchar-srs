@@ -51,6 +51,12 @@ const config: Config = {
           "sans-serif",
         ],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        hebrew: [
+          "var(--font-heebo)",
+          "var(--font-inter)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       maxWidth: {
         container: "1440px",

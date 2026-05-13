@@ -1,23 +1,21 @@
-import type { Metadata } from "next";
-import { capabilities, heroImages } from "@/data/content";
+import { getCapabilities, heroImages } from "@/data/content";
 import { CinemaImage } from "@/components/CinemaImage";
 import { Reveal } from "@/components/Reveal";
 import { CinematicHero } from "@/components/CinematicHero";
 import { Closer } from "@/components/Closer";
+import { dict, type Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  title: "Operational Support Capabilities",
-  description:
-    "BOS/BOS-I support, ground transportation, GLOC, cross-border logistics, fleet operations, billeting & life support, airfield & remote site support, rapid deployment.",
-};
+export function CapabilitiesTemplate({ locale }: { locale: Locale }) {
+  const t = dict[locale].pages.capabilities;
+  const capabilities = getCapabilities(locale);
 
-export default function CapabilitiesPage() {
   return (
     <>
       <CinematicHero
-        eyebrow="Operational Support Capabilities"
-        headline={`BOS. Logistics.\nTransportation.\nLife Support.`}
-        sub="Mission-ready operational support — owned assets, vetted vendors, and field execution across Israel and the region."
+        locale={locale}
+        eyebrow={t.eyebrow}
+        headline={t.headline}
+        sub={t.sub}
         image={heroImages.capabilities}
       />
 
@@ -55,7 +53,7 @@ export default function CapabilitiesPage() {
                       }`}
                     >
                       <div className="font-mono text-[10px] uppercase tracking-wider3 text-olive-light">
-                        {String(i + 1).padStart(2, "0")} — Capability
+                        {String(i + 1).padStart(2, "0")} — {t.capabilityLabel}
                       </div>
                       <h2 className="mt-6 font-display text-3xl font-light leading-[1.05] tracking-ultratight text-bone md:text-4xl lg:text-5xl">
                         {c.title}
@@ -72,11 +70,7 @@ export default function CapabilitiesPage() {
         </ul>
       </section>
 
-      <Closer
-        title="Brief us on the mission."
-        sub="Scope, timeline, location. We respond within 24 hours."
-        ctaLabel="Engage Ashchar"
-      />
+      <Closer locale={locale} title={t.closerTitle} />
     </>
   );
 }

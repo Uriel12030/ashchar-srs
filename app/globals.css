@@ -79,3 +79,37 @@ body {
 ::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb { background: #1A1A1D; border-radius: 0; }
 ::-webkit-scrollbar-thumb:hover { background: #2D2D35; }
+
+/* ----- Hebrew / RTL adjustments ----- */
+
+/* Hebrew body text uses Heebo. The Latin display/mono fonts still render
+   Latin glyphs (UEI, NCAGE, ASHCHAR wordmark) correctly because they're
+   inherited via font-display / font-mono classes on those elements. */
+html[lang="he"] body {
+  font-family: var(--font-heebo), var(--font-inter), system-ui, sans-serif;
+  font-feature-settings: normal;
+}
+
+/* Hebrew text rendering inside display-class elements — Heebo handles
+   Hebrew, Inter Tight (Latin) handles Latin fallback. */
+html[lang="he"] .font-display {
+  font-family: var(--font-heebo), var(--font-display), system-ui, sans-serif;
+}
+
+/* Tight tracking values were tuned for Latin display type; loosen on
+   Hebrew so the Hebrew glyphs don't read as cramped. */
+html[lang="he"] .tracking-ultratight {
+  letter-spacing: -0.02em;
+}
+html[lang="he"] .tracking-tightish {
+  letter-spacing: 0;
+}
+html[lang="he"] .tracking-wider2,
+html[lang="he"] .tracking-wider3 {
+  letter-spacing: 0.06em;
+}
+
+/* Mono operator-metadata text stays Latin (registration numbers, etc.). */
+html[lang="he"] .font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace !important;
+}

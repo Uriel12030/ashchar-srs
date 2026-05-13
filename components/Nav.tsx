@@ -1,20 +1,33 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  dict,
+  localePath,
+  otherLocale,
+  swapLocalePath,
+  type Locale,
+} from "@/lib/i18n";
 
-const links = [
-  { href: "/capabilities", label: "Capabilities" },
-  { href: "/government", label: "Government" },
-  { href: "/commercial", label: "Commercial" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
-
-export function Nav() {
+export function Nav({ locale }: { locale: Locale }) {
+  const t = dict[locale];
+  const pathname = usePathname() || "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { href: localePath(locale, "/capabilities"), label: t.nav.capabilities },
+    { href: localePath(locale, "/government"), label: t.nav.government },
+    { href: localePath(locale, "/commercial"), label: t.nav.commercial },
+    { href: localePath(locale, "/projects"), label: t.nav.projects },
+    { href: localePath(locale, "/contact"), label: t.nav.contact },
+  ];
+
+  const other = otherLocale(locale);
+  const swap = swapLocalePath(locale, pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,10 +50,10 @@ export function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-container items-center justify-between px-6 md:h-20 md:px-10">
         <Link
-          href="/"
+          href={localePath(locale, "/")}
           className="font-display text-[14px] font-medium tracking-wider2 text-bone"
         >
-          ASHCHAR
+          {t.common.brand}
         </Link>
 
         <nav className="hidden md:block">
@@ -58,17 +71,25 @@ export function Nav() {
           </ul>
         </nav>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <Link
-            href="/contact"
+            href={swap}
+            hrefLang={other}
+            className="font-mono text-[10px] uppercase tracking-wider3 text-graphite-100 transition-colors hover:text-bone"
+            aria-label={`Switch to ${t.common.languageSwitchTo}`}
+          >
+            {t.common.languageSwitchTo}
+          </Link>
+          <Link
+            href={localePath(locale, "/contact")}
             className="font-mono text-[10px] uppercase tracking-wider3 text-bone"
           >
-            +972 52-377-7635 · Engage
+            {t.common.navContact}
           </Link>
         </div>
 
         <button
-          aria-label="Menu"
+          aria-label={t.common.menu}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className="md:hidden flex h-10 w-10 items-center justify-center"
@@ -118,6 +139,25 @@ export function Nav() {
                   </Link>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.05 * links.length,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="mt-6 border-t hairline pt-6"
+              >
+                <Link
+                  href={swap}
+                  hrefLang={other}
+                  onClick={() => setOpen(false)}
+                  className="block py-2 font-mono text-[11px] uppercase tracking-wider3 text-graphite-100"
+                >
+                  {t.common.languageSwitchTo}
+                </Link>
+              </motion.li>
             </ul>
           </motion.div>
         )}

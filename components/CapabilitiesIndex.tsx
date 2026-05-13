@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { capabilities } from "@/data/content";
+import { getCapabilities } from "@/data/content";
 import { CinemaImage } from "./CinemaImage";
 import { Reveal } from "./Reveal";
+import { dict, localePath, type Locale } from "@/lib/i18n";
 
-export function CapabilitiesIndex() {
+export function CapabilitiesIndex({ locale }: { locale: Locale }) {
+  const t = dict[locale].capabilities;
+  const common = dict[locale].common;
+  const capabilities = getCapabilities(locale);
   const [active, setActive] = useState<number>(0);
   const current = capabilities[active];
 
@@ -18,25 +22,24 @@ export function CapabilitiesIndex() {
             <Reveal>
               <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
                 <span className="block h-px w-14 bg-olive-light" />
-                <span>Operational Support Capabilities</span>
+                <span>{t.eyebrow}</span>
               </div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-8 max-w-[18ch] font-display text-display-md font-light text-bone">
-                BOS, logistics, transportation, life support.
+                {t.title}
               </h2>
             </Reveal>
           </div>
           <Link
-            href="/capabilities"
+            href={localePath(locale, "/capabilities")}
             className="self-start text-[11px] uppercase tracking-wider2 text-bone underline-offset-[6px] hover:underline md:self-end"
           >
-            View all →
+            {common.viewAll}
           </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Image column — sticks while user scans the list */}
           <div className="lg:col-span-7 lg:sticky lg:top-32 lg:self-start">
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-graphite-900 md:aspect-[16/10]">
               {capabilities.map((c, i) => (
@@ -58,7 +61,8 @@ export function CapabilitiesIndex() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
               <div className="pointer-events-none absolute inset-0 grain" />
               <div className="absolute bottom-6 left-6 z-10 font-mono text-[10px] uppercase tracking-wider3 text-graphite-100 md:bottom-8 md:left-8">
-                {String(active + 1).padStart(2, "0")} / {String(capabilities.length).padStart(2, "0")} — {current.title}
+                {String(active + 1).padStart(2, "0")} /{" "}
+                {String(capabilities.length).padStart(2, "0")} — {current.title}
               </div>
             </div>
           </div>
@@ -81,7 +85,9 @@ export function CapabilitiesIndex() {
                       </span>
                       <span
                         className={`font-display text-2xl font-light tracking-tightish transition-colors duration-500 md:text-3xl ${
-                          active === i ? "text-bone" : "text-graphite-100 group-hover:text-bone"
+                          active === i
+                            ? "text-bone"
+                            : "text-graphite-100 group-hover:text-bone"
                         }`}
                       >
                         {c.title}
@@ -90,7 +96,9 @@ export function CapabilitiesIndex() {
                     <span
                       aria-hidden
                       className={`text-[12px] transition-all duration-500 ease-cinema ${
-                        active === i ? "translate-x-0 text-bone opacity-100" : "-translate-x-2 opacity-0"
+                        active === i
+                          ? "translate-x-0 text-bone opacity-100"
+                          : "-translate-x-2 opacity-0"
                       }`}
                     >
                       →

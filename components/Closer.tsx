@@ -4,8 +4,10 @@ import Link from "next/link";
 import { CinemaImage } from "./CinemaImage";
 import { Reveal } from "./Reveal";
 import { heroImages } from "@/data/content";
+import { dict, localePath, type Locale } from "@/lib/i18n";
 
 type Props = {
+  locale: Locale;
   title?: string;
   sub?: string;
   ctaHref?: string;
@@ -14,12 +16,14 @@ type Props = {
 };
 
 export function Closer({
-  title = "Brief us on the mission.",
-  sub = "Scope, timeline, location. We respond within 24 hours.",
-  ctaHref = "/contact",
-  ctaLabel = "Engage Ashchar",
+  locale,
+  title,
+  sub,
+  ctaHref,
+  ctaLabel,
   image = heroImages.closer,
 }: Props) {
+  const t = dict[locale].closer;
   return (
     <section className="relative h-[90svh] min-h-[600px] overflow-hidden border-t hairline">
       <CinemaImage
@@ -35,26 +39,26 @@ export function Closer({
         <Reveal>
           <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
             <span className="block h-px w-14 bg-olive-light" />
-            <span>Engage</span>
+            <span>{t.eyebrow}</span>
           </div>
         </Reveal>
         <Reveal delay={0.1}>
           <h2 className="mt-10 max-w-[16ch] font-display text-display-lg font-light text-bone">
-            {title}
+            {title ?? t.title}
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mt-10 max-w-[44ch] text-base font-light leading-relaxed text-graphite-100 md:text-lg">
-            {sub}
+            {sub ?? t.sub}
           </p>
         </Reveal>
         <Reveal delay={0.3}>
           <Link
-            href={ctaHref}
+            href={ctaHref ?? localePath(locale, "/contact")}
             className="group mt-14 inline-flex items-center gap-5 self-start text-[11px] uppercase tracking-wider2 text-bone"
           >
             <span className="block h-px w-14 bg-bone transition-all duration-700 ease-cinema group-hover:w-24" />
-            <span>{ctaLabel}</span>
+            <span>{ctaLabel ?? t.cta}</span>
           </Link>
         </Reveal>
       </div>
