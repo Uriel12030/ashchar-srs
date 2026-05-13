@@ -387,12 +387,12 @@ export const dict: Record<Locale, Dictionary> = {
     },
 
     experience: {
-      eyebrow: "Past & ongoing experience",
-      title: "Operational experience.",
-      body: "Ashchar has supported operational requirements involving government organizations, military units, and prime contractors operating in Israel.",
-      includes: "Relevant operational experience includes",
+      eyebrow: "Supporting Government & Contractor Operations",
+      title: "Operational Experience",
+      body: "Ashchar supports operational, logistics, transportation, billeting, and infrastructure-related requirements across Israel, including work involving government and prime contractor environments.",
+      includes: "Relevant operational experience",
       disclaimer:
-        "Logos and organization references are used solely to represent relevant operational experience and do not imply endorsement or formal affiliation unless explicitly stated.",
+        "Organization references are presented solely to reflect relevant operational environments and experience and do not imply endorsement or formal affiliation unless explicitly stated.",
       expand: {
         USAF: "U.S. Air Force",
         SOCCENT: "Special Operations Command Central",
@@ -692,12 +692,12 @@ export const dict: Record<Locale, Dictionary> = {
     },
 
     experience: {
-      eyebrow: "ניסיון עבר ופעיל",
-      title: "ניסיון מבצעי.",
-      body: "אשחר תמכה בדרישות מבצעיות הכוללות גופי ממשל, יחידות צבא וקבלני prime ראשיים הפועלים בישראל.",
-      includes: "ניסיון מבצעי רלוונטי כולל",
+      eyebrow: "תמיכה בפעילות ממשל וקבלנים",
+      title: "ניסיון מבצעי",
+      body: "אשחר תומכת בדרישות מבצעיות, לוגיסטיות, הסעות, אכלוס ותשתיות ברחבי ישראל, כולל פעילות הכוללת סביבות של ממשל וקבלני prime ראשיים.",
+      includes: "ניסיון מבצעי רלוונטי",
       disclaimer:
-        "סמלילים והפניות לארגונים משמשים אך ורק לייצוג ניסיון מבצעי רלוונטי ואינם מרמזים על אישור או שיוך פורמלי אלא אם כן צוין במפורש.",
+        "ההפניות לארגונים מוצגות אך ורק לשם שיקוף סביבות מבצעיות וניסיון רלוונטי ואינן מרמזות על אישור או שיוך פורמלי אלא אם כן צוין במפורש.",
       expand: {
         USAF: "חיל האוויר של ארה״ב",
         SOCCENT: "פיקוד מבצעים מיוחדים מרכזי",

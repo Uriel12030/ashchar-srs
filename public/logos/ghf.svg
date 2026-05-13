@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="GHF">
+  <g fill="#EDEAE0">
+    <circle cx="120" cy="22" r="2.5" />
+    <text x="120" y="56" text-anchor="middle" font-family="Inter Tight, ui-sans-serif, system-ui, sans-serif" font-size="32" font-weight="500" letter-spacing="6">GHF</text>
+  </g>
+</svg>
