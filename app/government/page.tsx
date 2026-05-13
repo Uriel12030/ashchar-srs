@@ -58,7 +58,7 @@ export default function GovernmentPage() {
       <Closer
         title="Ready to deploy?"
         sub="Brief us on the requirement. We respond within 24 hours."
-        ctaLabel="Engage Ashchar Ops"
+        ctaLabel="Engage Ashchar"
       />
     </>
   );

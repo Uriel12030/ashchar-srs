@@ -28,7 +28,7 @@ export function MissionExecution() {
           <div className="lg:col-span-8 lg:pt-6">
             <Reveal delay={0.1}>
               <p className="max-w-[60ch] font-light leading-relaxed text-graphite-100 text-base md:text-lg">
-                Ashchar Ops supports dynamic operational requirements where
+                Ashchar supports dynamic operational requirements where
                 speed, coordination, and reliability matter. Our team combines
                 local supplier networks, field project management,
                 transportation assets, and regional logistics coordination to

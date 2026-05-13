@@ -1,5 +1,5 @@
 export const site = {
-  name: "Ashchar Ops",
+  name: "Ashchar",
   legalName: "Ashchar Ltd.",
   url: "https://ashcharops.com",
   email: "isaac@ashchar.com",

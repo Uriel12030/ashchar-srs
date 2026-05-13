@@ -25,17 +25,17 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const ogTitle = "Ashchar Ops — Regional Operational Support";
+const ogTitle = "Ashchar — Operational Support in Israel";
 const ogDescription =
-  "Transportation, billeting, cargo movement, and operational support services across Israel and the region.";
+  "Transportation, billeting, cargo movement, and operational support services across Israel.";
 const ogImageAlt =
-  "Ashchar Ops — wide operational logistics scene in Israel showing passenger vans, SUVs, a shuttle bus, temporary accommodation, and cargo handling with a forklift.";
+  "Ashchar — operational support scene in Israel showing passenger vans, SUVs, a shuttle bus parked near modern Mediterranean-style accommodation, and cargo handling with a forklift.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashcharops.com"),
   title: {
     default: ogTitle,
-    template: "%s — Ashchar Ops",
+    template: "%s — Ashchar",
   },
   description: ogDescription,
   openGraph: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "https://ashcharops.com",
     title: ogTitle,
     description: ogDescription,
-    siteName: "Ashchar Ops",
+    siteName: "Ashchar",
     locale: "en_US",
     images: [
       {

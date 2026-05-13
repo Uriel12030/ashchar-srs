@@ -75,7 +75,7 @@ export default function CapabilitiesPage() {
       <Closer
         title="Brief us on the mission."
         sub="Scope, timeline, location. We respond within 24 hours."
-        ctaLabel="Engage Ashchar Ops"
+        ctaLabel="Engage Ashchar"
       />
     </>
   );

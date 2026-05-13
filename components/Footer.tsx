@@ -11,7 +11,7 @@ export function Footer() {
               href="/"
               className="font-display text-[15px] tracking-tightish text-bone"
             >
-              ASHCHAR OPS
+              ASHCHAR
             </Link>
             <p className="mt-6 max-w-[40ch] text-[13px] font-light leading-relaxed text-graphite-100">
               Base operational support, logistics, transportation, and life

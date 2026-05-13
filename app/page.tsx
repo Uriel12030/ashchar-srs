@@ -6,13 +6,14 @@ import { PathwaysSplit } from "@/components/PathwaysSplit";
 import { MissionExecution } from "@/components/MissionExecution";
 import { CapabilitiesIndex } from "@/components/CapabilitiesIndex";
 import { Operations } from "@/components/Operations";
+import { OperationalExperience } from "@/components/OperationalExperience";
 import { Closer } from "@/components/Closer";
 import { heroImages } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Ashchar Ops — Regional Operational Support",
+  title: "Ashchar — Operational Support in Israel",
   description:
-    "Transportation, billeting, cargo movement, and operational support services across Israel and the region.",
+    "Transportation, billeting, cargo movement, and operational support services across Israel.",
 };
 
 export default function HomePage() {
@@ -31,10 +32,11 @@ export default function HomePage() {
       <MissionExecution />
       <CapabilitiesIndex />
       <Operations />
+      <OperationalExperience />
       <Closer
         title="Brief us on the mission."
         sub="Scope, timeline, location. We respond within 24 hours."
-        ctaLabel="Engage Ashchar Ops"
+        ctaLabel="Engage Ashchar"
       />
     </>
   );
