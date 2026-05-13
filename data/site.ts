@@ -2,7 +2,7 @@ export const site = {
   name: "Ashchar",
   legalName: "Ashchar Ltd.",
   url: "https://ashcharops.com",
-  email: "isaac@ashchar.com",
+  email: "office@ashchar.com",
   phone: "+972 52-377-7635",
   whatsapp: "+972523777635",
   linkedin: "https://www.linkedin.com/company/ashchar",
