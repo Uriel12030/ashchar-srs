@@ -38,7 +38,7 @@ export const experienceEntries: ExperienceEntry[] = [
   { name: "MARCENT", logo: "/logos/marcent.svg", width: 180, height: 60, expandKey: "MARCENT" },
   { name: "MSOC", logo: "/logos/marsoc.svg", width: 60, height: 60, expandKey: "MSOC" },
   { name: "Amentum", logo: "/logos/amentum.png", width: 180, height: 46 },
-  { name: "V2X", logo: "/logos/v2x.svg", width: 120, height: 60 },
+  { name: "Arkel International", logo: "/logos/arkel.png", width: 220, height: 45 },
   { name: "Gotham", logo: "/logos/gotham.svg", width: 160, height: 60 },
   { name: "GHF", logo: "/logos/ghf.png", width: 143, height: 60 },
 ];
