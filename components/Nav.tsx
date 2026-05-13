@@ -37,7 +37,7 @@ export function Nav({ locale }: { locale: Locale }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-cinema ${
         scrolled || open
-          ? "bg-ink/85 backdrop-blur-xl border-b hairline"
+          ? "bg-ink backdrop-blur-xl border-b hairline"
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -101,7 +101,7 @@ export function Nav({ locale }: { locale: Locale }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden fixed inset-0 top-16 bg-ink/95 backdrop-blur-xl"
+            className="md:hidden fixed inset-0 top-16 bg-ink backdrop-blur-xl"
           >
             <ul className="flex flex-col gap-1 px-6 py-10">
               {links.map((l, i) => (
