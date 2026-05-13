@@ -33,7 +33,7 @@ export type ExperienceEntry = {
 };
 
 export const experienceEntries: ExperienceEntry[] = [
-  { name: "USAF", logo: "/logos/usaf.png", width: 60, height: 60, expandKey: "USAF" },
+  { name: "USAF", logo: "/logos/usaf.svg", width: 120, height: 60, expandKey: "USAF" },
   { name: "SOCCENT", logo: "/logos/soccent.svg", width: 56, height: 60, expandKey: "SOCCENT" },
   { name: "MARCENT", logo: "/logos/marcent.svg", width: 180, height: 60, expandKey: "MARCENT" },
   { name: "MSOC", logo: "/logos/marsoc.svg", width: 60, height: 60, expandKey: "MSOC" },
