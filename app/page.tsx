@@ -10,10 +10,9 @@ import { Closer } from "@/components/Closer";
 import { heroImages } from "@/data/content";
 
 export const metadata: Metadata = {
-  title:
-    "Ashchar Ops — Base Operational Support in Israel & the Region",
+  title: "Ashchar Ops — Regional Operational Support",
   description:
-    "Mission-ready base operations, logistics, transportation, and life-support services for U.S. Government, military, and prime contractor operations across Israel and the region.",
+    "Transportation, billeting, cargo movement, and operational support services across Israel and the region.",
 };
 
 export default function HomePage() {

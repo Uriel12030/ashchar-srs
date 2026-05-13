@@ -25,25 +25,24 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const ogTitle = "Ashchar Ops — Regional Operational Support";
+const ogDescription =
+  "Transportation, billeting, cargo movement, and operational support services across Israel and the region.";
 const ogImageAlt =
-  "Ashchar Ops — operational logistics fleet on a dusty access road heading toward a modular operational compound in Israel.";
+  "Ashchar Ops — wide operational logistics scene in Israel showing passenger vans, SUVs, a shuttle bus, temporary accommodation, and cargo handling with a forklift.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashcharops.com"),
   title: {
-    default:
-      "Ashchar Ops — Base Operational Support in Israel & the Region",
+    default: ogTitle,
     template: "%s — Ashchar Ops",
   },
-  description:
-    "Mission-ready base operations, logistics, transportation, and life-support services for U.S. Government, military, and prime contractor operations across Israel and the region.",
+  description: ogDescription,
   openGraph: {
     type: "website",
     url: "https://ashcharops.com",
-    title:
-      "Ashchar Ops — Base Operational Support in Israel & the Region",
-    description:
-      "BOS/BOS-I support capabilities. Fleet, GLOC, cross-border logistics, billeting, airfield and remote site support.",
+    title: ogTitle,
+    description: ogDescription,
     siteName: "Ashchar Ops",
     locale: "en_US",
     images: [
@@ -58,10 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Ashchar Ops — Base Operational Support in Israel & the Region",
-    description:
-      "BOS/BOS-I support capabilities. Fleet, GLOC, cross-border logistics, billeting, airfield and remote site support.",
+    title: ogTitle,
+    description: ogDescription,
     images: [
       {
         url: "/twitter-image.jpg",
