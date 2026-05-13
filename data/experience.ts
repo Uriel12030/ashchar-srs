@@ -40,7 +40,7 @@ export const experienceEntries: ExperienceEntry[] = [
   { name: "Amentum", logo: "/logos/amentum.png", width: 180, height: 46 },
   { name: "V2X", logo: "/logos/v2x.svg", width: 120, height: 60 },
   { name: "Gotham", logo: "/logos/gotham.svg", width: 160, height: 60 },
-  { name: "GHF", logo: "/logos/ghf.svg", width: 120, height: 60 },
+  { name: "GHF", logo: "/logos/ghf.png", width: 143, height: 60 },
 ];
 
 export const getOperationalExperience = (locale: Locale) =>
