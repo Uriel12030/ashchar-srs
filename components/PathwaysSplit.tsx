@@ -10,8 +10,8 @@ const pathways = [
     href: "/government",
     eyebrow: "Pathway · 01",
     sector: "Government & Defense",
-    title: "Mission-critical operations.",
-    body: "Support for U.S. Government and defense operations in Israel.",
+    title: "Mission-critical BOS support.",
+    body: "BOS/BOS-I support capabilities for U.S. Government, military, and prime contractor operations.",
     image: "/images/generated/force-protection-infrastructure.jpg",
   },
   {
@@ -19,7 +19,7 @@ const pathways = [
     eyebrow: "Pathway · 02",
     sector: "Commercial Operations",
     title: "Industrial scale. Operational discipline.",
-    body: "Fleet, housing, and infrastructure for private-sector operators.",
+    body: "Fleet, billeting, logistics, and field support for private-sector operators.",
     image: "/images/generated/fleet-vehicles-israel.jpg",
   },
 ];
@@ -33,12 +33,12 @@ export function PathwaysSplit() {
         <Reveal>
           <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
             <span className="block h-px w-14 bg-olive-light" />
-            <span>Two pathways</span>
+            <span>Operating contexts</span>
           </div>
         </Reveal>
         <Reveal delay={0.05}>
-          <h2 className="mt-8 max-w-[18ch] font-display text-display-md font-light text-bone">
-            Choose your operating context.
+          <h2 className="mt-8 max-w-[20ch] font-display text-display-md font-light text-bone">
+            Government missions. Commercial operations.
           </h2>
         </Reveal>
       </div>

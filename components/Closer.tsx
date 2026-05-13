@@ -14,10 +14,10 @@ type Props = {
 };
 
 export function Closer({
-  title = "Brief us on the requirement.",
+  title = "Brief us on the mission.",
   sub = "Scope, timeline, location. We respond within 24 hours.",
   ctaHref = "/contact",
-  ctaLabel = "Engage Ashchar",
+  ctaLabel = "Engage Ashchar Ops",
   image = heroImages.closer,
 }: Props) {
   return (

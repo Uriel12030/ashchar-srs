@@ -11,10 +11,12 @@ export function Footer() {
               href="/"
               className="font-display text-[15px] tracking-tightish text-bone"
             >
-              ASHCHAR
+              ASHCHAR OPS
             </Link>
-            <p className="mt-6 max-w-[36ch] text-[13px] font-light leading-relaxed text-graphite-100">
-              Operational infrastructure and logistics support across Israel.
+            <p className="mt-6 max-w-[40ch] text-[13px] font-light leading-relaxed text-graphite-100">
+              Base operational support, logistics, transportation, and life
+              support for U.S. Government, military, and prime contractor
+              operations in Israel and the region.
             </p>
           </div>
 
@@ -94,7 +96,7 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col gap-4 text-[10px] uppercase tracking-wider3 text-graphite-200 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <span>© {new Date().getFullYear()} Ashchar Ltd.</span>
+            <span>© {new Date().getFullYear()} {site.legalName}</span>
             <span>{site.location}</span>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono">

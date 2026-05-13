@@ -37,12 +37,13 @@ export default function ContactPage() {
         </Reveal>
         <Reveal delay={0.05}>
           <h1 className="mt-10 max-w-[14ch] font-display text-display-lg font-light text-bone">
-            Brief us on the requirement.
+            Brief us on the mission.
           </h1>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="mt-10 max-w-[44ch] text-base font-light leading-relaxed text-graphite-100 md:text-lg">
-            We respond within 24 hours.
+          <p className="mt-10 max-w-[48ch] text-base font-light leading-relaxed text-graphite-100 md:text-lg">
+            BOS, logistics, transportation, life support. We respond within 24
+            hours.
           </p>
         </Reveal>
 

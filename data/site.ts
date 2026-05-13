@@ -1,5 +1,6 @@
 export const site = {
-  name: "Ashchar",
+  name: "Ashchar Ops",
+  legalName: "Ashchar Ltd.",
   url: "https://ashchar.com",
   email: "isaac@ashchar.com",
   phone: "+972 52-377-7635",

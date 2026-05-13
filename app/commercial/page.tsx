@@ -10,29 +10,29 @@ import { heroImages } from "@/data/content";
 export const metadata: Metadata = {
   title: "Commercial Operations",
   description:
-    "Industrial-scale logistics and infrastructure execution for private-sector operators in Israel.",
+    "Fleet & ground transportation, billeting & life support, regional logistics & movement support for private-sector operators in Israel.",
 };
 
 const focus = [
   {
-    title: "Workforce housing",
-    body: "Modular accommodation at scale. Climate-controlled. Sustained.",
+    title: "Fleet & ground transportation",
+    body: "Pickups, SUVs, vans, buses, executive transport, shuttle operations, maintenance and surge capacity.",
   },
   {
-    title: "Logistics",
-    body: "Port, inland transport, warehousing, distribution.",
+    title: "Billeting & life support",
+    body: "Modular accommodation at scale, hotels, cleaning, sanitation, water, daily sustainment.",
   },
   {
-    title: "Fleet rental",
-    body: "Pickups, transport, fuel, heavy equipment. Long-term and surge.",
+    title: "Regional logistics & movement",
+    body: "Port, inland transport, warehousing, distribution, cross-border coordination.",
   },
   {
-    title: "Infrastructure setup",
-    body: "Power, water, climate, fencing, access. Greenfield to operational.",
+    title: "Procurement & operational supplies",
+    body: "Sourcing, vendor coordination, equipment delivery for time-critical and sustained requirements.",
   },
   {
     title: "Temporary operational sites",
-    body: "Engineered, deployed, managed, demobilized.",
+    body: "Engineered, deployed, managed, demobilized — practical execution from greenfield to operational.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function CommercialPage() {
       <LandingHero
         eyebrow="Commercial Operations"
         headline={`Industrial scale.\nOperational discipline.`}
-        sub="Workforce housing, logistics, fleet, and infrastructure for private-sector operators in Israel."
+        sub="Fleet & ground transportation, billeting, regional logistics, and field support for private-sector operators in Israel."
         image={heroImages.commercial}
       />
       <CredibilityStrip />

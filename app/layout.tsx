@@ -28,17 +28,19 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ashchar.com"),
   title: {
-    default: "Ashchar — Operational Infrastructure & Logistics Support in Israel",
-    template: "%s — Ashchar",
+    default:
+      "Ashchar Ops — Base Operational Support in Israel & the Region",
+    template: "%s — Ashchar Ops",
   },
   description:
-    "Rapid deployment solutions for defense and commercial operations. Modular facilities, reinforced bunkers, heavy equipment, fleets, and site development across Israel.",
+    "Mission-ready base operations, logistics, transportation, and life-support services for U.S. Government, military, and prime contractor operations across Israel and the region.",
   openGraph: {
     type: "website",
-    title: "Ashchar — Operational Infrastructure & Logistics Support in Israel",
+    title:
+      "Ashchar Ops — Base Operational Support in Israel & the Region",
     description:
-      "Rapid deployment solutions for defense and commercial operations across Israel.",
-    siteName: "Ashchar",
+      "BOS/BOS-I support capabilities. Fleet, GLOC, cross-border logistics, billeting, airfield and remote site support.",
+    siteName: "Ashchar Ops",
     locale: "en_US",
   },
   robots: { index: true, follow: true },

@@ -40,7 +40,7 @@ export function Nav() {
           href="/"
           className="font-display text-[14px] font-medium tracking-wider2 text-bone"
         >
-          ASHCHAR
+          ASHCHAR OPS
         </Link>
 
         <nav className="hidden md:block">

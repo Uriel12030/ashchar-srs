@@ -14,9 +14,9 @@ export default function ProjectsPage() {
   return (
     <>
       <CinematicHero
-        eyebrow="Selected work"
+        eyebrow="Selected operations"
         headline={`Executed\nin theatre.`}
-        sub="A representative slice of work delivered under operational conditions."
+        sub="A representative slice of BOS, logistics, and transportation work delivered under operational conditions."
         image={heroImages.government}
       />
       <Operations withHeader={false} />

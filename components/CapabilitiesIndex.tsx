@@ -18,12 +18,12 @@ export function CapabilitiesIndex() {
             <Reveal>
               <div className="flex items-center gap-5 text-[10px] uppercase tracking-wider3 text-graphite-200">
                 <span className="block h-px w-14 bg-olive-light" />
-                <span>Capabilities</span>
+                <span>Operational Support Capabilities</span>
               </div>
             </Reveal>
             <Reveal delay={0.05}>
               <h2 className="mt-8 max-w-[18ch] font-display text-display-md font-light text-bone">
-                Owned. Maintained. Ready.
+                BOS, logistics, transportation, life support.
               </h2>
             </Reveal>
           </div>
