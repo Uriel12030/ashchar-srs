@@ -1,20 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  dict,
-  localePath,
-  otherLocale,
-  swapLocalePath,
-  type Locale,
-} from "@/lib/i18n";
+import { dict, localePath, type Locale } from "@/lib/i18n";
+
+// Language switcher temporarily hidden — Hebrew routes still live at /he,
+// just not surfaced in the UI yet. The switcher uses usePathname + swapLocalePath
+// from lib/i18n when re-enabled.
 
 export function Nav({ locale }: { locale: Locale }) {
   const t = dict[locale];
-  const pathname = usePathname() || "/";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -25,9 +21,6 @@ export function Nav({ locale }: { locale: Locale }) {
     { href: localePath(locale, "/projects"), label: t.nav.projects },
     { href: localePath(locale, "/contact"), label: t.nav.contact },
   ];
-
-  const other = otherLocale(locale);
-  const swap = swapLocalePath(locale, pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -71,15 +64,7 @@ export function Nav({ locale }: { locale: Locale }) {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-6 md:flex">
-          <Link
-            href={swap}
-            hrefLang={other}
-            className="font-mono text-[10px] uppercase tracking-wider3 text-graphite-100 transition-colors hover:text-bone"
-            aria-label={`Switch to ${t.common.languageSwitchTo}`}
-          >
-            {t.common.languageSwitchTo}
-          </Link>
+        <div className="hidden items-center md:flex">
           <Link
             href={localePath(locale, "/contact")}
             className="font-mono text-[10px] uppercase tracking-wider3 text-bone"
@@ -139,25 +124,6 @@ export function Nav({ locale }: { locale: Locale }) {
                   </Link>
                 </motion.li>
               ))}
-              <motion.li
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.05 * links.length,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="mt-6 border-t hairline pt-6"
-              >
-                <Link
-                  href={swap}
-                  hrefLang={other}
-                  onClick={() => setOpen(false)}
-                  className="block py-2 font-mono text-[11px] uppercase tracking-wider3 text-graphite-100"
-                >
-                  {t.common.languageSwitchTo}
-                </Link>
-              </motion.li>
             </ul>
           </motion.div>
         )}
