@@ -82,6 +82,8 @@ type Dictionary = {
     uei: string;
     ncage: string;
     oconus: string;
+    governmentSupport: string;
+    rapidResponse: string;
     samActive: string;
   };
 
@@ -259,9 +261,11 @@ export const dict: Record<Locale, Dictionary> = {
 
     trust: {
       sam: "SAM Registered",
-      uei: "UEI: VJ23VL3BNJL8",
-      ncage: "NCAGE: 7006A",
-      oconus: "Israel-Based OCONUS Support",
+      uei: "Active UEI · VJ23VL3BNJL8",
+      ncage: "Active NCAGE · 7006A",
+      oconus: "Israel-Based Operational Support",
+      governmentSupport: "Government & Defense Support Operations",
+      rapidResponse: "Rapid Response Logistics & Infrastructure",
       samActive: "SAM Active",
     },
 
@@ -274,7 +278,7 @@ export const dict: Record<Locale, Dictionary> = {
 
     hero: {
       coords: "31.7683° N · 35.2137° E",
-      theatre: "Israel — Operational Theatre",
+      theatre: "Israel — Operational Support",
     },
 
     pathways: {
@@ -360,7 +364,7 @@ export const dict: Record<Locale, Dictionary> = {
 
     operations: {
       eyebrow: "Selected operations",
-      title: "Executed in theatre.",
+      title: "Delivered on site.",
       opLabel: "Op",
       catGovernment: "Government",
       catCommercial: "Commercial",
@@ -410,9 +414,9 @@ export const dict: Record<Locale, Dictionary> = {
 
     pages: {
       home: {
-        eyebrow: "Israel & Regional Operations — BOS / BOS-I Support",
-        headline: "Base Operations.\nLogistics.\nLife Support.",
-        sub: "Mission-ready operational support for U.S. Government, military, and prime contractor operations across Israel.",
+        eyebrow: "Operational Support — Israel",
+        headline: "Operational support.\nLogistics. Infrastructure.",
+        sub: "Sustainment, transportation, billeting, and rapid procurement for U.S. Government and prime contractor operations in Israel.",
         metaTitle: "Ashchar — Operational Support in Israel",
         metaDescription:
           "Transportation, billeting, cargo movement, and operational support services across Israel.",
@@ -501,7 +505,7 @@ export const dict: Record<Locale, Dictionary> = {
       },
       projects: {
         eyebrow: "Selected operations",
-        headline: "Executed\nin theatre.",
+        headline: "Operational\ndelivery.",
         sub: "A representative slice of BOS, logistics, and transportation work delivered under operational conditions.",
         metaTitle: "Projects",
         metaDescription:
@@ -564,9 +568,11 @@ export const dict: Record<Locale, Dictionary> = {
 
     trust: {
       sam: "רשום ב-SAM",
-      uei: "UEI: VJ23VL3BNJL8",
-      ncage: "NCAGE: 7006A",
-      oconus: "תמיכת OCONUS מבוססת ישראל",
+      uei: "UEI פעיל · VJ23VL3BNJL8",
+      ncage: "NCAGE פעיל · 7006A",
+      oconus: "תמיכה מבצעית מבוססת ישראל",
+      governmentSupport: "תמיכת מבצעים לממשל וביטחון",
+      rapidResponse: "לוגיסטיקה ותשתיות תגובה מהירה",
       samActive: "SAM פעיל",
     },
 
@@ -579,7 +585,7 @@ export const dict: Record<Locale, Dictionary> = {
 
     hero: {
       coords: "31.7683° N · 35.2137° E",
-      theatre: "ישראל — תיאטרון מבצעי",
+      theatre: "ישראל — תמיכה מבצעית",
     },
 
     pathways: {
@@ -665,7 +671,7 @@ export const dict: Record<Locale, Dictionary> = {
 
     operations: {
       eyebrow: "מבצעים נבחרים",
-      title: "מבוצע בשטח.",
+      title: "מסירה באתר.",
       opLabel: "מבצע",
       catGovernment: "ממשל",
       catCommercial: "מסחרי",
@@ -715,9 +721,9 @@ export const dict: Record<Locale, Dictionary> = {
 
     pages: {
       home: {
-        eyebrow: "ישראל ומבצעים אזוריים — תמיכת BOS / BOS-I",
-        headline: "תמיכת בסיס.\nלוגיסטיקה.\nתמיכת חיים.",
-        sub: "תמיכה מבצעית מוכנה למשימה עבור ממשל ארה״ב, צבא וקבלני prime ראשיים ברחבי ישראל.",
+        eyebrow: "תמיכה מבצעית — ישראל",
+        headline: "תמיכה מבצעית.\nלוגיסטיקה. תשתיות.",
+        sub: "אחזקה, הסעות, אכלוס ורכש מהיר עבור פעילות של ממשל ארה״ב וקבלני prime ראשיים בישראל.",
         metaTitle: "אשחר — תמיכה מבצעית בישראל",
         metaDescription:
           "הסעות, אכלוס, תנועת מטענים ושירותי תמיכה מבצעית ברחבי ישראל.",
@@ -804,7 +810,7 @@ export const dict: Record<Locale, Dictionary> = {
       },
       projects: {
         eyebrow: "עבודה נבחרת",
-        headline: "מבוצע\nבשטח.",
+        headline: "מסירה\nמבצעית.",
         sub: "פלח מייצג של עבודת BOS, לוגיסטיקה והסעות שנמסרה בתנאים מבצעיים.",
         metaTitle: "פרויקטים",
         metaDescription:

@@ -27,7 +27,14 @@ export const getMetrics = (locale: Locale): Metric[] =>
 
 export const getTrustSignals = (locale: Locale): string[] => {
   const t = dict[locale].trust;
-  return [t.sam, t.uei, t.ncage, t.oconus];
+  return [
+    t.sam,
+    t.uei,
+    t.ncage,
+    t.oconus,
+    t.governmentSupport,
+    t.rapidResponse,
+  ];
 };
 
 /* ---------- Capabilities ---------- */
