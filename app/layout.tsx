@@ -29,7 +29,7 @@ const ogImageAlt =
   "Ashchar Ops — operational logistics fleet on a dusty access road heading toward a modular operational compound in Israel.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ashchar.com"),
+  metadataBase: new URL("https://ashcharops.com"),
   title: {
     default:
       "Ashchar Ops — Base Operational Support in Israel & the Region",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "Mission-ready base operations, logistics, transportation, and life-support services for U.S. Government, military, and prime contractor operations across Israel and the region.",
   openGraph: {
     type: "website",
-    url: "https://ashchar.com",
+    url: "https://ashcharops.com",
     title:
       "Ashchar Ops — Base Operational Support in Israel & the Region",
     description:
